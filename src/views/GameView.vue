@@ -8,7 +8,7 @@ export default {
   data() {
     return {
       myList: [], // Your list of items
-      originalList: [
+      originalList:
         [
           { "name": "Henk", "imgUrl": "https://xpirit.com/people/henkboelman.jpg" },
           { "name": "Edwin", "imgUrl": "https://xpirit.com/people/edwinvdgraaf.jpg" },
@@ -45,16 +45,16 @@ export default {
           { "name": "Ivo", "imgUrl": "https://xpirit.com/people/ivodeboer.jpg" },
           { "name": "Maarten", "imgUrl": "https://xpirit.com/people/maartenballiauw.jpg" }
         ]
-      ]
     };
   },
   methods: {
     randomizeList() {
-      const maxItems = Math.min(this.originalList.length, 5);
+      const maxItems = Math.min(this.originalList.length, 10);
       const shuffledList = this.originalList.slice().sort(() => Math.random() - 0.5);
       this.myList = shuffledList.slice(0, maxItems).map(item => ({
         ...item, // Copy the original item's properties.
         answer: '', // Add an 'answer' field initialized as an empty string.
+        link: "https://xpirit.com" + item.imgUrl, // Add a 'link' field initialized with the item's imgUrl.
       }));
     },
   },
