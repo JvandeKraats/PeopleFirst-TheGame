@@ -45,7 +45,7 @@ export default {
     <img :src="collegas[currentIndex].Image" class="guess-who-image" />
     <input type="text" v-model="collegas[currentIndex].Answer" class="guess-who-input" />
     <p v-if="currentIndex < collegas.length - 1">
-      <button @click="prevousItem" class="guess-who-button">Previous</button>
+      <button v-if="currentIndex > 0" @click="prevousItem" class="guess-who-button">Previous</button>
       <button @click="nextItem" class="guess-who-button">Next</button>
     </p>
     <p v-else>
@@ -90,6 +90,7 @@ export default {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-right: 10px;
 }
 
 .guess-who-button:hover {
