@@ -14,7 +14,7 @@
     mounted() {
       const storedScore = JSON.parse(localStorage.getItem('gameScore'));
       if (storedScore !== null) {
-        this.score = storedScore;
+        this.score = storedScore.toFixed(1);
       }
     }
   };

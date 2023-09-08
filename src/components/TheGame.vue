@@ -25,12 +25,14 @@ export default {
       this.$router.push('/result');
     },
     calculateScore() {
-      let score = 0;
+      let totalGoodAnswers = 0;
       for (let i = 0; i < this.collegas.length; i++) {
         if (this.collegas[i].Answer === this.collegas[i].Name) {
-          score++;
+          totalGoodAnswers++;
         }
       }
+      
+      const score = (totalGoodAnswers / this.collegas.length) * 10;
       return score;
     }
   },
