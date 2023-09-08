@@ -42,7 +42,7 @@ export default {
 <template>
   <div class="guess-who-container">
     <p>Guess who is that:</p>
-    <img :src="collegas[currentIndex].imgUrl" class="guess-who-image" />
+    <img :src="collegas[currentIndex].link" class="guess-who-image" />
     <input type="text" v-model="collegas[currentIndex].answer" class="guess-who-input" />
     <p v-if="currentIndex < collegas.length - 1">
       <button v-if="currentIndex > 0" @click="prevousItem" class="guess-who-button">Previous</button>
