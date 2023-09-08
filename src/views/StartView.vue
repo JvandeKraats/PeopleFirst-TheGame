@@ -8,7 +8,7 @@ import WelcomeHeader from '../components/WelcomeHeader.vue'
       <WelcomeHeader msg="Welcome to the game!" />
     </div>
   </header>
-  <RouterLink to="/game">Start the game</RouterLink>
+  <RouterLink to="/game">Start the game </RouterLink>
 </template>
 
 <style></style>
