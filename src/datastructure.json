@@ -1,0 +1,28 @@
+{
+    "Colleagues": [
+        {
+            "Name": "Patrick",
+            "Image": "https://xpirit.com/wp-content/uploads/2021/11/patrick-de-kruijff.png"
+        },
+        {
+            "Name": "Natascha",
+            "Image": "https://xpirit.com/wp-content/uploads/2020/12/natascha-former.png"
+        },
+        {
+            "Name": "Jasper",
+            "Image": "https://xpirit.com/wp-content/uploads/2020/12/jasper-gilhuis.jpg"
+        }
+    ],
+    "Results": [
+        {
+            "Correct": false
+        },
+        {
+            "Correct": true
+        },
+        {
+            "Correct": true
+        }
+    ],
+    "CurrentPage": 1
+}
