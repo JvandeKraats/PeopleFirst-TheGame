@@ -1,13 +1,14 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import WelcomeHeader from '../components/WelcomeHeader.vue'
 </script>
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
-  <RouterLink to="/game">Start the game</RouterLink>
+  <header>
+    <div class="wrapper">
+      <WelcomeHeader msg="Welcome to the game!" />
+    </div>
+  </header>
+  <RouterLink to="/game">Start the game </RouterLink>
 </template>
 
-<style>
-
-</style>
+<style></style>
