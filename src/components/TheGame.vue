@@ -27,7 +27,7 @@ export default {
     calculateScore() {
       let totalGoodAnswers = 0;
       for (let i = 0; i < this.collegas.length; i++) {
-        if (this.collegas[i].answer === this.collegas[i].name) {
+        if (this.collegas[i].answer === this.collegas[i].firstName) {
           totalGoodAnswers++;
         }
       }

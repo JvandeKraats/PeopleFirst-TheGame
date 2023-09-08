@@ -131,10 +131,6 @@ export default {
             "imgUrl": "/wp-content/uploads/2020/12/niels-nijveldt.png"
           },
           {
-            "name": "Private: Martijn van der Sijde",
-            "imgUrl": "/wp-content/uploads/2020/12/martijn-van-der-sijde-xpirit.jpg"
-          },
-          {
             "name": "Erik Oppedijk",
             "imgUrl": "/wp-content/uploads/2020/12/erik-oppedijk-1-1.jpg"
           },
@@ -283,18 +279,6 @@ export default {
             "imgUrl": "/wp-content/uploads/2023/04/Vivian-w-web4-600x600.jpg"
           },
           {
-            "name": "We’re hiring: a Monolith Killer",
-            "imgUrl": "/wp-content/uploads/2021/05/Xpirit_Characters_3840x3840_middle-600x600.png"
-          },
-          {
-            "name": "We’re hiring: a Cloud Magician",
-            "imgUrl": "/wp-content/uploads/2021/05/Xpirit_Characters_3840x3840_right-600x600.png"
-          },
-          {
-            "name": "We’re hiring: a DevOps Whisperer",
-            "imgUrl": "/wp-content/uploads/2021/05/Xpirit_Characters_3840x3840_left-600x600.png"
-          },
-          {
             "name": "Pieter Gheysens",
             "imgUrl": "/wp-content/uploads/2020/12/pieter-gheysens.png"
           },
@@ -369,18 +353,6 @@ export default {
           {
             "name": "Sorin Pasa",
             "imgUrl": "/wp-content/uploads/2020/12/sorin-pasa-xpirit.jpg"
-          },
-          {
-            "name": "Monolith Killer – Belgium",
-            "imgUrl": "/wp-content/uploads/2021/05/XpiritNoProfileMan-505x600.png"
-          },
-          {
-            "name": "Coding Azure Architect – Cloud Architect – Azure Architect – Belgium (hybrid)",
-            "imgUrl": "/wp-content/uploads/2021/05/Xpirit_Characters_3840x3840_right-600x600.png"
-          },
-          {
-            "name": "DevOps Whisperer – Belgium",
-            "imgUrl": "/wp-content/uploads/2021/03/XpiritNoProfileWoman-507x600.png"
           },
           {
             "name": "Michael Kaufmann",
@@ -617,20 +589,7 @@ export default {
           {
             "name": "Blaize Stewart",
             "imgUrl": "/wp-content/uploads/2023/09/Untitled-design-25-600x600.png"
-          },
-          {
-            "name": "We’re Hiring – Application Modernizaion Consultant",
-            "imgUrl": "/wp-content/uploads/2023/03/XpiritNoProfileMan-505x600-1.png"
-          },
-          {
-            "name": "We’re Hiring – DevOps Consultant",
-            "imgUrl": "/wp-content/uploads/2021/05/XpiritNoProfileMan-505x600.png"
-          },
-          {
-            "name": "We’re Hiring – Cloud Solutions Architect",
-            "imgUrl": "/wp-content/uploads/2023/03/XpiritNoProfileMan-505x600-1.png"
           }
-
         ]
     };
   },
@@ -641,6 +600,7 @@ export default {
       this.myList = shuffledList.slice(0, maxItems).map(item => ({
         ...item, // Copy the original item's properties.
         answer: '', // Add an 'answer' field initialized as an empty string.
+        firstName: item.name.split(' ')[0], // Add a 'firstName' field initialized with the first part of the item's name (before the first space
         link: "https://xpirit.com" + item.imgUrl, // Add a 'link' field initialized with the item's imgUrl.
       }));
     },
