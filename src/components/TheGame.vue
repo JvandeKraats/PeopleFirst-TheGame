@@ -14,6 +14,10 @@ export default {
         this.currentIndex++;
       }
     },
+    submitAnswers() {
+      
+      this.$router.push('/result');
+    },
   },
 };
 </script>
@@ -25,7 +29,7 @@ export default {
       <button @click="nextItem">Next</button>
     </p>
     <p v-else>
-      <em>No more items</em>
+      <button @click="submitAnswers">Submit answers</button>>
     </p>
   </div>
 </template>
