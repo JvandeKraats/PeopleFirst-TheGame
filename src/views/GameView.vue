@@ -7,24 +7,8 @@ export default {
   },
   data() {
     return {
-      myList: [
-        {
-          "Name": "Patrick",
-          "Image": "https://xpirit.com/wp-content/uploads/2021/11/patrick-de-kruijff.png",
-          "Answer": null
-        },
-        {
-          "Name": "Natascha",
-          "Image": "https://xpirit.com/wp-content/uploads/2020/12/natascha-former.png",
-          "Answer": null
-        },
-        {
-          "Name": "Jasper",
-          "Image": "https://xpirit.com/wp-content/uploads/2020/12/jasper-gilhuis.jpg",
-          "Answer": null
-        }
-      ], // Your list of items
-      biggerList: [
+      myList: [], // Your list of items
+      originalList: [
         [
           { "name": "Henk", "imgUrl": "https://xpirit.com/people/henkboelman.jpg" },
           { "name": "Edwin", "imgUrl": "https://xpirit.com/people/edwinvdgraaf.jpg" },
@@ -68,7 +52,10 @@ export default {
     randomizeList() {
       const maxItems = Math.min(this.originalList.length, 5);
       const shuffledList = this.originalList.slice().sort(() => Math.random() - 0.5);
-      this.myList = shuffledList.slice(0, maxItems);
+      this.myList = shuffledList.slice(0, maxItems).map(item => ({
+        ...item, // Copy the original item's properties.
+        answer: '', // Add an 'answer' field initialized as an empty string.
+      }));
     },
   },
   created() {

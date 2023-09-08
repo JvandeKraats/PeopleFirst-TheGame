@@ -27,11 +27,11 @@ export default {
     calculateScore() {
       let totalGoodAnswers = 0;
       for (let i = 0; i < this.collegas.length; i++) {
-        if (this.collegas[i].Answer === this.collegas[i].Name) {
+        if (this.collegas[i].answer === this.collegas[i].name) {
           totalGoodAnswers++;
         }
       }
-      
+
       const score = (totalGoodAnswers / this.collegas.length) * 10;
       return score;
     }
@@ -42,8 +42,8 @@ export default {
 <template>
   <div class="guess-who-container">
     <p>Guess who is that:</p>
-    <img :src="collegas[currentIndex].Image" class="guess-who-image" />
-    <input type="text" v-model="collegas[currentIndex].Answer" class="guess-who-input" />
+    <img :src="collegas[currentIndex].imgUrl" class="guess-who-image" />
+    <input type="text" v-model="collegas[currentIndex].answer" class="guess-who-input" />
     <p v-if="currentIndex < collegas.length - 1">
       <button v-if="currentIndex > 0" @click="prevousItem" class="guess-who-button">Previous</button>
       <button @click="nextItem" class="guess-who-button">Next</button>
