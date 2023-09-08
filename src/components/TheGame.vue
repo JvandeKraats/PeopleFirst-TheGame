@@ -33,11 +33,11 @@ export default {
     <img :src="collegas[currentIndex].Image" />
     <input type="text" v-model="collegas[currentIndex].Answer" />
     <p v-if="currentIndex < collegas.length - 1">
-      <button @click="nextItem">Next</button>
       <button @click="prevousItem">Previous</button>
+      <button @click="nextItem">Next</button>
     </p>
     <p v-else>
-      <button @click="submitAnswers">Submit answers</button>>
+      <button @click="submitAnswers">Submit answers</button>
     </p>
   </div>
 </template>
