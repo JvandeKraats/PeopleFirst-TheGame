@@ -1,5 +1,7 @@
 <script>
 import TheGame from '../components/TheGame.vue'
+import axios from 'axios';
+import cheerio from 'cheerio';
 
 export default {
   components: {
@@ -604,8 +606,47 @@ export default {
         link: "https://xpirit.com" + item.imgUrl, // Add a 'link' field initialized with the item's imgUrl.
       }));
     },
+    getBackgroundImageUrl(element) {
+      // Get the computed style of the element
+      const computedStyle = getComputedStyle(element);
+
+      // Extract the background image URL from the computed style
+      const backgroundImage = computedStyle.backgroundImage;
+
+      // Extract the URL using a regular expression
+      const match = backgroundImage.match(/url\(["']?(.*?)["']?\)/);
+
+      if (match && match[1]) {
+        return match[1];
+      } else {
+        return null;
+      }
+    },
+    async fetchTeamData() {
+      try {
+        const url = 'https://xpirit.com/company/team/';
+        const response = await axios.get(url);
+        const $ = cheerio.load(response.data);
+
+        const teamMembers = [];
+
+        $('.team').each((index, element) => {
+          const name = $(element).find('h3').text().trim();
+          var imageElement = $(element).find('div.img-tall');
+          const imgUrl = getBackgroundImageUrl(imageElement);
+          if (name && imgUrl) {
+            teamMembers.push({ name, imgUrl });
+          }
+        });
+
+        this.originalList = teamMembers;
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    },
   },
-  created() {
+  async created() {
+    await this.fetchTeamData();
     this.randomizeList(); // Call randomizeList when the component is created.
   },
 };
