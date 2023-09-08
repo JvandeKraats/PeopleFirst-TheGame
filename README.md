@@ -1,8 +1,29 @@
 # PeopleFirst-TheGame
-This repository is created for the Xpirit Innovation Night on the 8th of September 2023  
-The goal is to create a game that helps you with getting to know your colleagues better.  
 
-## Ideas
-- Display a picture of a colleague and make the player guess their name
-  - We could scrape the pictures from the [teams](https://xpirit.com/company/team/) page.
-- Make a complete Guess Who equivalent
+This template should help get you started developing with Vue 3 in Vite.
+
+## Recommended IDE Setup
+
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
