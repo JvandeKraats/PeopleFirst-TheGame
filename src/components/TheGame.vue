@@ -20,9 +20,19 @@ export default {
       }
     },
     submitAnswers() {
-
+      var score = this.calculateScore();
+      localStorage.setItem('gameScore', JSON.stringify(score));
       this.$router.push('/result');
     },
+    calculateScore(){
+      let score = 0;
+      for (let i = 0; i < this.collegas.length; i++) {
+        if (this.collegas[i].Answer === this.collegas[i].Name) {
+          score++;
+        }
+      }
+      return score;
+    }
   },
 };
 </script>
@@ -37,7 +47,7 @@ export default {
       <button @click="prevousItem">Previous</button>
     </p>
     <p v-else>
-      <button @click="submitAnswers">Submit answers</button>>
+      <button @click="submitAnswers">Submit answers</button>
     </p>
   </div>
 </template>
