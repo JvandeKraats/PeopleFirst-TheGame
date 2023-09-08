@@ -24,7 +24,7 @@ export default {
       localStorage.setItem('gameScore', JSON.stringify(score));
       this.$router.push('/result');
     },
-    calculateScore(){
+    calculateScore() {
       let score = 0;
       for (let i = 0; i < this.collegas.length; i++) {
         if (this.collegas[i].Answer === this.collegas[i].Name) {
@@ -38,16 +38,59 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="guess-who-container">
     <p>Guess who is that:</p>
-    <img :src="collegas[currentIndex].Image" />
-    <input type="text" v-model="collegas[currentIndex].Answer" />
+    <img :src="collegas[currentIndex].Image" class="guess-who-image" />
+    <input type="text" v-model="collegas[currentIndex].Answer" class="guess-who-input" />
     <p v-if="currentIndex < collegas.length - 1">
-      <button @click="nextItem">Next</button>
-      <button @click="prevousItem">Previous</button>
+      <button @click="prevousItem" class="guess-who-button">Previous</button>
+      <button @click="nextItem" class="guess-who-button">Next</button>
     </p>
     <p v-else>
-      <button @click="submitAnswers">Submit answers</button>
+      <button @click="submitAnswers" class="guess-who-button">Submit answers</button>
     </p>
   </div>
 </template>
+
+<style scoped>
+.guess-who-container {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.guess-who-image {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.guess-who-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.guess-who-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.guess-who-button:hover {
+  background-color: #0056b3;
+}
+</style>
