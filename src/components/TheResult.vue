@@ -1,6 +1,6 @@
 <template>
     <div class="score-container">
-      <h1>Your Score: {{ score }}</h1>
+      <h1 :class="score >= 5 ? 'high-score' : 'low-score'">Your Score: {{ score }}</h1>
     </div>
   </template>
   
@@ -27,6 +27,12 @@
     align-items: center;
     height: 100vh;
     font-size: 2em;
+  }
+  .high-score {
+    color: green;
+  }
+  .low-score {
+    color: red;
   }
   </style>
   
