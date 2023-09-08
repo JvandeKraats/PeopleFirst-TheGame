@@ -10,15 +10,18 @@ export default {
       myList: [
         {
           "Name": "Patrick",
-          "Image": "https://xpirit.com/wp-content/uploads/2021/11/patrick-de-kruijff.png"
+          "Image": "https://xpirit.com/wp-content/uploads/2021/11/patrick-de-kruijff.png",
+          "Answer": null
         },
         {
           "Name": "Natascha",
-          "Image": "https://xpirit.com/wp-content/uploads/2020/12/natascha-former.png"
+          "Image": "https://xpirit.com/wp-content/uploads/2020/12/natascha-former.png",
+          "Answer": null
         },
         {
           "Name": "Jasper",
-          "Image": "https://xpirit.com/wp-content/uploads/2020/12/jasper-gilhuis.jpg"
+          "Image": "https://xpirit.com/wp-content/uploads/2020/12/jasper-gilhuis.jpg",
+          "Answer": null
         }
       ], // Your list of items
     };
