@@ -1,6 +1,6 @@
 <template>
   <div class="score-container">
-    <h1 :class="score >= 5 ? 'high-score' : 'low-score'">Your Score: {{ score }}</h1>
+    <h1 :class="score.scoreOutOf10 >= 5 ? 'high-score' : 'low-score'">Your Score: {{ score.scoreOutOf10 }}</h1>
     <button @click="resetScore" class="try-again-button">Try Again</button>
   </div>
 </template>
@@ -9,13 +9,17 @@
 export default {
   data() {
     return {
-      score: null
+      score: {
+        scoreOutOf10: 0,
+        totalGoodAnswers: 0,
+        wrongAnswers: []
+      }
     };
   },
   mounted() {
     const storedScore = JSON.parse(localStorage.getItem('gameScore'));
     if (storedScore !== null) {
-      this.score = storedScore.toFixed(1);
+      this.score = storedScore;
     }
   },
   methods: {

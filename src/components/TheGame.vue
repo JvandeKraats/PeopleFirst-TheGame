@@ -26,13 +26,23 @@ export default {
     },
     calculateScore() {
       let totalGoodAnswers = 0;
+      let wrongAnswers = [];
       for (let i = 0; i < this.collegas.length; i++) {
         if (this.collegas[i].answer === this.collegas[i].firstName) {
           totalGoodAnswers++;
+        } else {
+          wrongAnswers.push({
+            name: this.collegas[i].firstName,
+            imgUrl: this.collegas[i].imgUrl
+          });
         }
       }
 
-      const score = (totalGoodAnswers / this.collegas.length) * 10;
+      const score = {
+        scoreOutOf10: ((totalGoodAnswers / this.collegas.length) * 10).toFixed(1),
+        totalGoodAnswers: totalGoodAnswers,
+        wrongAnswers: wrongAnswers
+      }
       return score;
     }
   },
