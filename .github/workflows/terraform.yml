@@ -5,6 +5,12 @@ on:
     branches:
       - '*'
 
+env:
+  ARM_CLIENT_ID: ${{ secrets.ARM_SP_CLIENTID }}
+  ARM_CLIENT_SECRET: ${{ secrets.ARM_SP_PASSWORD }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+  ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
 jobs:
   validate-terraform:
     runs-on: ubuntu-latest
@@ -16,13 +22,12 @@ jobs:
       uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: 1.5.6
-      
-    - name: Login to Azure and validate Terraform
-      run: |
-        az login --service-principal -u ${{ secrets.ARM_CLIENT_ID }} -p ${{ secrets.ARM_CLIENT_SECRET }} --tenant ${{ secrets.ARM_TENANT_ID }}
-        cd Infra
+
+    - name: Terraform Init
+      run: | 
         terraform init
         terraform validate
+      working-directory: Infra
         
   validate-Vue:
     runs-on: ubuntu-latest
@@ -51,13 +56,9 @@ jobs:
       uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: 1.5.6
-      
-    - name: Login to Azure
-      run: |
-        az login --service-principal -u ${{ secrets.ARM_CLIENT_ID }} -p ${{ secrets.ARM_CLIENT_SECRET }} --tenant ${{ secrets.ARM_TENANT_ID }}
     
-    - name: Terraform Apply
-      run: |
-        cd Infra
+    - name: Terraform Init
+      run: | 
         terraform init
         terraform apply -auto-approve
+      working-directory: Infra
