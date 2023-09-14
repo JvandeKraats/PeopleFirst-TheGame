@@ -1,0 +1,54 @@
+name: Terraform CI/CD
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  validate-terraform:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+      
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      
+    - name: Terraform Validate
+      run: |
+        cd Infra
+        terraform init
+        terraform validate
+
+  validate-Vue:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+      
+    - name: Install Dependencies
+      run: npm ci
+
+    - name: Run Vue Lint
+      run: npm run lint
+
+    - name: Run Vue Tests
+      run: npm run test
+
+  apply:
+    if: github.ref == 'refs/heads/main'
+    needs: [validate-terraform, validate-Vue]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+      
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      
+    - name: Terraform Apply
+      run: |
+        cd Infra
+        terraform init
+        terraform apply -auto-approve
