@@ -1,0 +1,71 @@
+:root{
+  --xebia-primary: #831B84;
+  --xebia-primary-2: #6f1670;
+  --xebia-bg: #ffffff;
+  --xebia-surface: #f8f9fa;
+  --xebia-card: #ffffff;
+  --xebia-muted: #6c757d;
+}
+
+body{
+  background: var(--xebia-bg);
+  min-height: 100vh;
+  color: #111;
+}
+
+/* Header */
+.xebia-header{
+  background: linear-gradient(
+          90deg,
+          rgba(131,27,132,0.95),
+          rgba(111,22,112,0.95)
+  );
+  color: white;
+  border-bottom: none;
+}
+
+/* Cards */
+.xebia-card{
+  background: var(--xebia-card);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+/* Buttons */
+.btn-xebia{
+  background: var(--xebia-primary);
+  border-color: var(--xebia-primary);
+  color: white;
+  font-weight: 600;
+}
+
+.btn-xebia:hover{
+  background: var(--xebia-primary-2);
+  border-color: var(--xebia-primary-2);
+}
+
+.btn-xebia-outline{
+  border-color: rgba(131,27,132,0.4);
+  color: var(--xebia-primary);
+  font-weight: 600;
+}
+
+.btn-xebia-outline:hover{
+  background: rgba(131,27,132,0.08);
+}
+
+/* Inputs */
+.form-control:focus{
+  border-color: rgba(131,27,132,0.5);
+  box-shadow: 0 0 0 .2rem rgba(131,27,132,.15);
+}
+
+/* Person image */
+.person-photo{
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 999px;
+  border: 4px solid rgba(131,27,132,0.15);
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+}

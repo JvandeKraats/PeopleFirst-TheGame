@@ -1,11 +1,19 @@
-import './assets/main.css'
+import "./assets/main.css";
+import './assets/theme.css'
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import { msalInstance } from "@/auth/msal";
 
-const app = createApp(App)
+async function bootstrap() {
+    // Initialize MSAL and handle redirect response (if returning from login)
+    await msalInstance.initialize();
+    await msalInstance.handleRedirectPromise();
 
-app.use(router)
+    const app = createApp(App);
+    app.use(router);
+    app.mount("#app");
+}
 
-app.mount('#app')
+bootstrap();

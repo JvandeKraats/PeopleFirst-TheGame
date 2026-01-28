@@ -28,7 +28,7 @@ export default {
       let totalGoodAnswers = 0;
       let wrongAnswers = [];
       for (let i = 0; i < this.collegas.length; i++) {
-        if (this.collegas[i].answer === this.collegas[i].firstName) {
+        if ((this.collegas[i].answer || "").trim().toLowerCase() === (this.collegas[i].firstName || "").trim().toLowerCase()) {
           totalGoodAnswers++;
         } else {
           wrongAnswers.push({

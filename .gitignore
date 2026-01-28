@@ -30,3 +30,5 @@ coverage
 
 # Terraform
 Infra/.terraform/*
+
+.env.local
