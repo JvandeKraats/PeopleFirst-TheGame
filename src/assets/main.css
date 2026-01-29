@@ -1,17 +1,16 @@
 /* Layout */
 .start-screen {
-  min-height: 100vh;
+  min-height: 100svh; /* Small viewport height – safest default */
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  padding: 24px;
+  padding: 16px;
 }
 
 .start-content {
-  text-align: center;
-  max-width: 420px;
   width: 100%;
+  max-width: 420px;
+  text-align: center;
 }
 
 /* Global font */
