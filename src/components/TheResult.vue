@@ -30,8 +30,15 @@
       <div v-if="score.wrongAnswers && score.wrongAnswers.length" class="wrong">
         <div class="wrong-title">Missed names</div>
         <ul class="wrong-list">
-          <li v-for="(w, idx) in score.wrongAnswers" :key="idx">
-            {{ w.name }}
+          <li v-for="(w, idx) in score.wrongAnswers" :key="idx" class="wrong-item">
+            <img
+                class="wrong-photo"
+                :src="missedPhotoSrc(w)"
+                :alt="w.name ? `Photo of ${w.name}` : 'Missed person photo'"
+                loading="lazy"
+                @error="(e) => (e.target.src = '/fallback-photos/fallback-avatar.png')"
+            />
+            <div class="wrong-name">{{ w.name }}</div>
           </li>
         </ul>
       </div>
@@ -76,6 +83,15 @@ export default {
     }
   },
   methods: {
+    missedPhotoSrc(w) {
+      // Support both current and older score shapes
+      return (
+          w?.imgUrl ||
+          w?.link ||
+          w?.photo ||
+          "/fallback-photos/fallback-avatar.png"
+      );
+    },
     resetScore() {
       this.$router.push("/");
     }
@@ -175,12 +191,40 @@ export default {
   margin-bottom: 8px;
 }
 .wrong-list {
+  list-style: none;
   margin: 0;
-  padding-left: 18px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
   color: rgba(0,0,0,0.72);
 }
-.wrong-list li {
-  margin: 4px 0;
+.wrong-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.02);
+}
+.wrong-photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  object-fit: cover;
+  flex: 0 0 auto;
+  border: 2px solid rgba(46,164,79,0.18);
+  background: #f6f6f6;
+}
+.wrong-name {
+  font-weight: 700;
+}
+
+@media (min-width: 520px) {
+  .wrong-list {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* Actions */

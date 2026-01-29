@@ -44,7 +44,7 @@ export default {
         } else {
           wrongAnswers.push({
             name: this.collegas[i].firstName,
-            imgUrl: this.collegas[i].imgUrl,
+            imgUrl: this.collegas[i].link,
           });
         }
       }
@@ -81,7 +81,7 @@ export default {
             :src="collegas[currentIndex].link"
             class="photo"
             alt="Colleague photo"
-            @error="(e) => (e.target.src = '/fallback-photos/fallback.jpg')"
+            @error="(e) => (e.target.src = '/fallback-photos/fallback-avatar.png')"
         />
       </div>
 
