@@ -10,6 +10,10 @@ function start(mode) {
 function goToMatch() {
   router.push('/match')
 }
+
+function goToMemoryGame() {
+  router.push('/memory')
+}
 </script>
 
 <template>
@@ -47,7 +51,12 @@ function goToMatch() {
         <div class="mode-hint">
           You’ll see one name and four photos — tap the correct photo.
         </div>
-      </div>
+        <button class="start-button start-button--xebia" @click="goToMemoryGame">
+          Memory game
+        </button>
+        <div class="mode-hint">
+          Match pairs of names and photos in this classic memory game.
+        </div>      </div>
 <!--
       <div class="hint">
         Best experienced on mobile · Portrait mode
