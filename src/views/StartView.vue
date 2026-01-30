@@ -12,23 +12,33 @@ function start(mode) {
 }
 
 function goToMatch() {
-  router.push('/match')
+  const query = {}
+  if (trackTime.value) query.time = '1'
+  router.push({ path: '/match', query })
 }
 
 function goToMemoryGame() {
-  router.push('/memory')
+  const query = {}
+  if (trackTime.value) query.time = '1'
+  router.push({ path: '/memory', query })
 }
 
 function goToFindJesse() {
-  router.push('/find-jesse')
+  const query = {}
+  if (trackTime.value) query.time = '1'
+  router.push({ path: '/find-jesse', query })
 }
 
 function goToSilhouetteQuiz() {
-  router.push('/silhouette-quiz')
+  const query = {}
+  if (trackTime.value) query.time = '1'
+  router.push({ path: '/silhouette-quiz', query })
 }
 
 function goToProgressiveReveal() {
-  router.push('/progressive-reveal')
+  const query = {}
+  if (trackTime.value) query.time = '1'
+  router.push({ path: '/progressive-reveal', query })
 }
 </script>
 
