@@ -1,4 +1,6 @@
 <script>
+import { applyFallbackOnError, getFallbackAvatarUrl } from '../utils/photo'
+
 import XmsLogoHomeLink from './XmsLogoHomeLink.vue'
 
 export default {
@@ -28,7 +30,15 @@ export default {
       selectedIds: new Set()
     };
   },
+  computed: {
+    fallbackAvatarUrl() {
+      return getFallbackAvatarUrl()
+    }
+  },
   methods: {
+    onPhotoError(e) {
+      applyFallbackOnError(e, this.fallbackAvatarUrl)
+    },
     toggleSelection(person) {
       if (this.selectedIds.has(person.id)) {
         this.selectedIds.delete(person.id);
@@ -49,24 +59,24 @@ export default {
       const jesseIds = this.collegas
         .filter(p => p.isJesse)
         .map(p => p.id);
-      
+
       const selectedArray = Array.from(this.selectedIds);
       const correctSelections = selectedArray.filter(id => jesseIds.includes(id)).length;
       const falsePositiveIds = selectedArray.filter(id => !jesseIds.includes(id));
       const missedJesseIds = jesseIds.filter(id => !this.selectedIds.has(id));
-      
+
       // Calculate true negatives: non-Jesses that were correctly NOT selected
       const nonJesseIds = this.collegas.filter(p => !p.isJesse).map(p => p.id);
       const trueNegatives = nonJesseIds.filter(id => !this.selectedIds.has(id)).length;
-      
+
       // Total correct = true positives + true negatives
       const totalCorrect = correctSelections + trueNegatives;
-      
+
       // Calculate score: (truePositives/jesseCount - falsePositives/totalTiles) × 10
       const totalTiles = this.collegas.length;
       const rawScore = ((correctSelections / this.jesseCount) - (falsePositiveIds.length / totalTiles)) * 10;
       const scoreOutOf10 = Math.max(0, Math.min(10, rawScore)).toFixed(1);
-      
+
       // Build separate arrays for missed Jesses and false positives
       const missedJesses = [];
       missedJesseIds.forEach(id => {
@@ -78,7 +88,7 @@ export default {
           });
         }
       });
-      
+
       const falsePositives = [];
       falsePositiveIds.forEach(id => {
         const person = this.collegas.find(p => p.id === id);
@@ -89,7 +99,7 @@ export default {
           });
         }
       });
-      
+
       this.$emit('submit', {
         scoreOutOf10,
         totalGoodAnswers: totalCorrect,
@@ -134,7 +144,7 @@ export default {
             :src="person.link"
             :alt="`Colleague photo`"
             class="img"
-            @error="(e) => (e.target.src = '/fallback-photos/fallback-avatar.png')"
+            @error="onPhotoError"
           />
           <div v-if="isSelected(person)" class="checkmark">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -145,8 +155,8 @@ export default {
       </div>
 
       <div class="actions">
-        <button 
-          class="btn btn-secondary refresh-btn" 
+        <button
+          class="btn btn-secondary refresh-btn"
           @click="handleRefresh"
           :disabled="refreshesRemaining === 0"
         >
