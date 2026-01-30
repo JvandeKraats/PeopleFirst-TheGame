@@ -33,6 +33,11 @@ const router = createRouter({
       name: "memory",
       component: () => import("../views/MemoryGameView.vue"),
     },
+    {
+      path: "/find-jesse",
+      name: "findJesse",
+      component: () => import("../views/FindJesseView.vue"),
+    },
   ],
 });
 
