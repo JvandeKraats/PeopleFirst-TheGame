@@ -94,6 +94,16 @@ body {
   background: #b71c1c;
 }
 
+.start-button--xebia {
+  background: #764ba2;
+  color: #fff;
+  border: none;
+}
+
+.start-button--xebia:hover {
+  background: #6b3f8e;
+}
+
 /* Hint */
 .hint {
   margin-top: 24px;
