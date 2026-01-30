@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@azure/msal-browser": "^5.0.2",
+    "@mediapipe/selfie_segmentation": "^0.1.1675465747",
     "axios": "^1.5.0",
     "canvas-confetti": "^1.9.4",
     "cheerio": "^1.0.0-rc.12",

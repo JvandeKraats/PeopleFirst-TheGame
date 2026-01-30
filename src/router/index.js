@@ -43,6 +43,21 @@ const router = createRouter({
       name: "findJesseResult",
       component: () => import("../components/FindJesseResult.vue"),
     },
+    {
+      path: "/silhouette-quiz",
+      name: "silhouetteQuiz",
+      component: () => import("../views/SilhouetteQuizView.vue"),
+    },
+    {
+      path: "/progressive-reveal",
+      name: "progressiveReveal",
+      component: () => import("../views/ProgressiveRevealView.vue"),
+    },
+    {
+      path: "/progressive-reveal-result",
+      name: "progressiveRevealResult",
+      component: () => import("../components/ProgressiveRevealResult.vue"),
+    },
   ],
 });
 

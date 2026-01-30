@@ -22,6 +22,14 @@ function goToMemoryGame() {
 function goToFindJesse() {
   router.push('/find-jesse')
 }
+
+function goToSilhouetteQuiz() {
+  router.push('/silhouette-quiz')
+}
+
+function goToProgressiveReveal() {
+  router.push('/progressive-reveal')
+}
 </script>
 
 <template>
@@ -71,6 +79,20 @@ function goToFindJesse() {
         </button>
         <div class="mode-hint">
           CAPTCHA-style: select all Jesses by photo only.
+        </div>
+
+        <button class="start-button start-button--secondary" @click="goToSilhouetteQuiz">
+          Silhouette Quiz
+        </button>
+        <div class="mode-hint">
+          Guess 10 names from silhouettes – photos revealed at the end.
+        </div>
+
+        <button class="start-button start-button--xebia" @click="goToProgressiveReveal">
+          Who's that colleague?
+        </button>
+        <div class="mode-hint">
+          Guess one colleague - wrong attempts gradually reveal the photo.
         </div>
       </div>
 
