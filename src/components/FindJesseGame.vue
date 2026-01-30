@@ -100,7 +100,7 @@ export default {
 </script>
 
 <template>
-  <main class="jesse-game-shell">
+  <main class="game-shell">
     <section class="card">
       <header class="header">
         <div class="flex items-center xl:pr-[1.813rem]" style="opacity:1">
@@ -113,22 +113,29 @@ export default {
         </div>
       </header>
 
-      <div class="captcha-prompt">
-        Select all squares with <strong>Jesse</strong>
+      <div class="meta">
+        <div class="prompt">Select all squares with <strong>Jesse</strong></div>
+        <div class="counter">Refreshes: {{ refreshesRemaining }}</div>
       </div>
 
-      <div class="grid-container" :style="{ gridTemplateColumns: `repeat(${gridSize}, 1fr)` }">
-        <div
+      <div class="explanation">
+        Tap/click all the photos that are Jesse, then press Verify.
+      </div>
+
+      <div class="grid" :style="{ gridTemplateColumns: `repeat(${gridSize}, 1fr)` }" role="group" aria-label="Photo grid">
+        <button
           v-for="person in collegas"
           :key="person.id"
-          class="grid-tile"
+          type="button"
+          class="tile"
           :class="{ selected: isSelected(person) }"
           @click="toggleSelection(person)"
+          :aria-pressed="isSelected(person)"
         >
           <img
             :src="person.link"
             :alt="`Colleague photo`"
-            class="tile-photo"
+            class="img"
             @error="(e) => (e.target.src = '/fallback-photos/fallback-avatar.png')"
           />
           <div v-if="isSelected(person)" class="checkmark">
@@ -136,7 +143,7 @@ export default {
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="white"/>
             </svg>
           </div>
-        </div>
+        </button>
       </div>
 
       <div class="actions">
@@ -158,26 +165,30 @@ export default {
 </template>
 
 <style scoped>
-.jesse-game-shell {
-  min-height: 100vh;
+/* Match the look/feel of other modes (TheGame / MatchNameToPictures) */
+.game-shell {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 18px;
+  background: var(--pf-bg);
+  font-family: Calibri, "Segoe UI", Arial, sans-serif;
+  color: var(--pf-text);
 }
 
 .card {
   width: 100%;
   max-width: 520px;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border-soft);
   border-radius: 16px;
   padding: 18px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 10px 28px var(--pf-shadow);
 }
 
 .header {
-  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .header a {
@@ -189,66 +200,91 @@ export default {
   height: auto;
 }
 
-.captcha-prompt {
-  text-align: center;
-  font-size: 1.1rem;
-  margin: 20px 0;
-  padding: 12px;
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
+/* Meta row */
+.meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
 }
 
-.captcha-prompt strong {
+.prompt {
   font-weight: 800;
-  color: #2ea44f;
 }
 
-.grid-container {
+.counter {
+  color: var(--pf-muted);
+  font-size: 0.95rem;
+}
+
+.prompt strong {
+  font-weight: 900;
+  color: var(--pf-accent);
+}
+
+.explanation {
+  margin-top: 10px;
+  text-align: center;
+  color: var(--pf-muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* Grid / tiles (match MatchNameToPictures) */
+.grid {
   display: grid;
   gap: 12px;
-  margin: 20px 0;
+  margin: 12px 0 16px;
 }
 
-.grid-tile {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  border: 2px solid rgba(0, 0, 0, 0.12);
-  border-radius: 8px;
-  background: #fff;
+.tile {
+  padding: 0;
+  border-radius: 14px;
+  border: 2px solid var(--pf-border);
+  background: var(--pf-surface);
   cursor: pointer;
   overflow: hidden;
-  transition: all 150ms ease;
+  position: relative;
+  transition: filter 150ms ease, box-shadow 150ms ease;
 }
 
-.grid-tile:hover {
+.tile:hover {
   filter: brightness(0.98);
 }
 
-.grid-tile.selected {
-  border-color: rgba(46, 164, 79, 0.9);
-  box-shadow: 0 0 0 4px rgba(46, 164, 79, 0.18);
+.tile:focus-visible {
+  outline: 3px solid rgba(46, 164, 79, 0.55);
+  outline-offset: 3px;
 }
 
-.tile-photo {
+.tile.selected {
+  border-color: rgba(46,164,79,0.9);
+  box-shadow: 0 0 0 4px rgba(46,164,79,0.18);
+}
+
+.img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 50%;
-  padding: 8px;
+  display: block;
+  background: var(--pf-surface-2);
 }
 
 .checkmark {
   position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 24px;
-  height: 24px;
-  background: #2ea44f;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  background: var(--pf-accent);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 6px 18px var(--pf-shadow);
+  border: 2px solid var(--pf-surface);
 }
 
 .checkmark svg {
@@ -257,26 +293,30 @@ export default {
 }
 
 .actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 0;
 }
 
 .btn {
-  flex: 1;
   padding: 12px 14px;
   border-radius: 12px;
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   transition: all 150ms ease;
 }
 
+.btn:focus-visible {
+  outline: 3px solid rgba(46, 164, 79, 0.55);
+  outline-offset: 2px;
+}
+
 .btn-primary {
-  background: #2ea44f;
+  background: var(--pf-accent);
   color: #fff;
-  border: 1px solid transparent;
 }
 
 .btn-primary:hover {
@@ -284,18 +324,19 @@ export default {
 }
 
 .btn-secondary {
-  background: #fff;
-  color: #111;
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: var(--pf-surface);
+  color: var(--pf-text);
+  border: 1px solid var(--pf-border-strong);
 }
 
 .btn-secondary:hover {
-  background: rgba(0, 0, 0, 0.03);
+  background: var(--pf-hover);
 }
 
 .btn-secondary:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  background: var(--pf-surface-2);
 }
 
 .refresh-btn {
