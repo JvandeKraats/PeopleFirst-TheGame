@@ -3,11 +3,33 @@
  * Creates silhouettes by detecting the person outline in photos
  */
 
-import { SelfieSegmentation } from '@mediapipe/selfie_segmentation'
-
 let segmentationModel = null
 let isInitializing = false
 let initPromise = null
+let scriptLoaded = false
+
+/**
+ * Load MediaPipe script from CDN
+ */
+async function loadMediaPipeScript() {
+  if (scriptLoaded) return
+  if (typeof window.SelfieSegmentation !== 'undefined') {
+    scriptLoaded = true
+    return
+  }
+
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script')
+    script.src = 'https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js'
+    script.crossOrigin = 'anonymous'
+    script.onload = () => {
+      scriptLoaded = true
+      resolve()
+    }
+    script.onerror = () => reject(new Error('Failed to load MediaPipe script'))
+    document.head.appendChild(script)
+  })
+}
 
 /**
  * Initialize the MediaPipe segmentation model (lazy loaded)
@@ -20,6 +42,12 @@ export async function initSegmentation() {
   isInitializing = true
   initPromise = (async () => {
     try {
+      // Load MediaPipe from CDN
+      await loadMediaPipeScript()
+
+      // Access the global SelfieSegmentation class
+      const SelfieSegmentation = window.SelfieSegmentation
+      
       segmentationModel = new SelfieSegmentation({
         locateFile: (file) => {
           return `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`
