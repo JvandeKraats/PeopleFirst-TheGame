@@ -2,19 +2,42 @@
 export default {
   props: {
     collegas: Array,
+    mode: {
+      type: String,
+      default: 'hard'
+    }
   },
   data() {
     return {
       currentIndex: 0,
+      choicesById: {}
     };
   },
   computed: {
+    isEasyMode() {
+      return (this.mode || '').toString().toLowerCase() === 'easy'
+    },
     progressText() {
       return `${this.currentIndex + 1} / ${this.collegas.length}`;
     },
     progressPercent() {
       return Math.round(((this.currentIndex + 1) / this.collegas.length) * 100);
     },
+    currentChoices() {
+      if (!this.isEasyMode) return []
+      return this.getChoicesForIndex(this.currentIndex)
+    }
+  },
+  watch: {
+    collegas: {
+      handler() {
+        this.choicesById = {}
+      },
+      deep: false
+    },
+    mode() {
+      this.choicesById = {}
+    }
   },
   methods: {
     nextItem() {
@@ -31,6 +54,44 @@ export default {
       const score = this.calculateScore();
       localStorage.setItem("gameScore", JSON.stringify(score));
       this.$router.push("/result");
+    },
+    selectChoice(choice) {
+      const item = this.collegas?.[this.currentIndex]
+      if (!item) return
+      item.answer = choice
+    },
+    isChoiceSelected(choice) {
+      const item = this.collegas?.[this.currentIndex]
+      return ((item?.answer || '').trim().toLowerCase() === (choice || '').trim().toLowerCase())
+    },
+    shuffle(items) {
+      const arr = items.slice()
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[arr[i], arr[j]] = [arr[j], arr[i]]
+      }
+      return arr
+    },
+    getChoicesForIndex(index) {
+      const item = this.collegas?.[index]
+      if (!item) return []
+
+      const cacheKey = item.id ?? index
+      const cached = this.choicesById[cacheKey]
+      if (cached && cached.length) return cached
+
+      const correct = (item.firstName || '').trim()
+      const pool = (this.collegas || [])
+        .map(c => (c.firstName || '').trim())
+        .filter(n => n)
+        .filter(n => n.toLowerCase() !== correct.toLowerCase())
+
+      const uniquePool = Array.from(new Set(pool))
+      const picked = this.shuffle(uniquePool).slice(0, 3)
+      const options = this.shuffle([correct, ...picked].filter(Boolean))
+
+      this.choicesById[cacheKey] = options
+      return options
     },
     calculateScore() {
       let totalGoodAnswers = 0;
@@ -87,17 +148,35 @@ export default {
       </div>
 
       <div class="form">
-        <label class="label" for="answer">First name</label>
-        <input
-            id="answer"
-            name="answer"
-            type="text"
-            class="input"
-            placeholder="Type the first name…"
-            autocomplete="off"
-            v-model="collegas[currentIndex].answer"
-        />
-        <div class="hint">Tip: first name only (case doesn’t matter)</div>
+        <template v-if="isEasyMode">
+          <div class="choices" role="group" aria-label="Multiple choice answers">
+            <button
+              v-for="choice in currentChoices"
+              :key="choice"
+              type="button"
+              class="choice"
+              :class="{ 'choice-selected': isChoiceSelected(choice) }"
+              @click="selectChoice(choice)"
+            >
+              {{ choice }}
+            </button>
+          </div>
+          <div class="hint">Multiple choice: pick the correct first name</div>
+        </template>
+
+        <template v-else>
+          <label class="label" for="answer">First name</label>
+          <input
+              id="answer"
+              name="answer"
+              type="text"
+              class="input"
+              placeholder="Type the first name…"
+              autocomplete="off"
+              v-model="collegas[currentIndex].answer"
+          />
+          <div class="hint">Exact match on first name (case doesn’t matter)</div>
+        </template>
       </div>
 
       <div class="actions">
@@ -257,6 +336,33 @@ export default {
   text-align: left;
   color: rgba(0,0,0,0.55);
   font-size: 0.9rem;
+}
+
+/* Multiple choice */
+.choices {
+  width: min(360px, 100%);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.choice {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.18);
+  background: #fff;
+  text-align: left;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.choice:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+.choice-selected {
+  border-color: rgba(46,164,79,0.9);
+  box-shadow: 0 0 0 4px rgba(46,164,79,0.18);
 }
 
 /* Buttons */
