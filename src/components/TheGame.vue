@@ -26,6 +26,12 @@ export default {
     currentChoices() {
       if (!this.isEasyMode) return []
       return this.getChoicesForIndex(this.currentIndex)
+    },
+    // Helper that returns true when in easy mode and a choice is selected for the current item
+    hasSelectedChoice() {
+      if (!this.isEasyMode) return true // not relevant for hard mode
+      const item = this.collegas?.[this.currentIndex]
+      return !!(item && (item.answer || '').toString().trim())
     }
   },
   watch: {
@@ -39,7 +45,29 @@ export default {
       this.choicesById = {}
     }
   },
+  mounted() {
+    // Listen for Enter key to advance to next item (or submit) when allowed.
+    window.addEventListener('keydown', this._handleKeyDown)
+  },
+  beforeUnmount() {
+    window.removeEventListener('keydown', this._handleKeyDown)
+  },
   methods: {
+    _handleKeyDown(e) {
+      if (e.key !== 'Enter') return
+      // Prevent form submits / accidental behavior
+      e.preventDefault()
+
+      // In easy mode we require a choice to be selected before advancing
+      if (this.isEasyMode && !this.hasSelectedChoice) return
+
+      if (this.currentIndex < this.collegas.length - 1) {
+        this.nextItem()
+      } else {
+        // last item -> submit
+        this.submitAnswers()
+      }
+    },
     nextItem() {
       if (this.currentIndex < this.collegas.length - 1) {
         this.currentIndex++;
@@ -192,6 +220,7 @@ export default {
             v-if="currentIndex < collegas.length - 1"
             class="btn btn-primary"
             @click="nextItem"
+            :disabled="isEasyMode && !hasSelectedChoice"
         >
           Next
         </button>
@@ -200,6 +229,7 @@ export default {
             v-else
             class="btn btn-primary"
             @click="submitAnswers"
+            :disabled="isEasyMode && !hasSelectedChoice"
         >
           Submit
         </button>
