@@ -69,6 +69,11 @@ export default {
     onPhotoError(e) {
       if (e?.target) e.target.src = this.fallbackAvatarUrl
     },
+    _sanitizeUrl(v) {
+      const s = (v ?? '').toString().trim()
+      if (!s || s === 'undefined' || s === 'null') return ''
+      return s
+    },
     _normalizeName(s) {
       return (s || '').toString().trim().toLowerCase()
     },
@@ -212,7 +217,7 @@ export default {
           const guess = (this.collegas[i].answer || '').toString().trim()
           wrongAnswers.push({
             name: this.collegas[i].firstName,
-            imgUrl: this.collegas[i].link,
+            imgUrl: this._sanitizeUrl(this.collegas[i].link) || this.fallbackAvatarUrl,
             guess,
             isClose: !this.isEasyMode && this._isReallyCloseGuess(guess, this.collegas[i].firstName)
           });
