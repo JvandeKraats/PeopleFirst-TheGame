@@ -345,11 +345,12 @@ export default {
   text-align: center;
 }
 .time-label {
-  color: rgba(0,0,0,0.6);
+  color: var(--pf-muted-2);
   font-weight: 700;
   font-size: 0.85rem;
 }
 .time-value {
+  color: var(--pf-muted-2);
   font-weight: 800;
   margin-top: 4px;
   font-size: 1.25rem;
