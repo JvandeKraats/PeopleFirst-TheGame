@@ -64,8 +64,8 @@ export default {
       // Store score in localStorage
       localStorage.setItem('gameScore', JSON.stringify(score));
       
-      // Navigate to result page
-      this.$router.push('/result');
+      // Navigate to Jesse-specific result page
+      this.$router.push('/find-jesse-result');
     }
   }
 };

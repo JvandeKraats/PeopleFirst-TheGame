@@ -38,6 +38,11 @@ const router = createRouter({
       name: "findJesse",
       component: () => import("../views/FindJesseView.vue"),
     },
+    {
+      path: "/find-jesse-result",
+      name: "findJesseResult",
+      component: () => import("../components/FindJesseResult.vue"),
+    },
   ],
 });
 
