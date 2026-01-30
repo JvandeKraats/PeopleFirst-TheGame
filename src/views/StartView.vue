@@ -6,6 +6,10 @@ const router = useRouter()
 function start(mode) {
   router.push({ path: '/game', query: { mode } })
 }
+
+function goToMatch() {
+  router.push('/match')
+}
 </script>
 
 <template>
@@ -30,11 +34,18 @@ function start(mode) {
           Multiple choice — pick the correct first name.
         </div>
 
-        <button class="start-button start-button--secondary" @click="start('hard')">
+        <button class="start-button start-button--danger" @click="start('hard')">
           Hard mode
         </button>
         <div class="mode-hint">
           Type the first name yourself and get an exact match.
+        </div>
+
+        <button class="start-button" @click="goToMatch">
+          Match name to pictures
+        </button>
+        <div class="mode-hint">
+          You’ll see one name and four photos — tap the correct photo.
         </div>
       </div>
 <!--
