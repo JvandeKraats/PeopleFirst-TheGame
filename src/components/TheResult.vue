@@ -23,6 +23,12 @@
           {{ score.totalGoodAnswers }} / {{ totalQuestions }} correct
         </div>
 
+        <!-- Added: show elapsed time when present in the saved score -->
+        <div v-if="score.elapsed" class="time-taken">
+          <div class="time-label">Time</div>
+          <div class="time-value">{{ score.elapsed }}</div>
+        </div>
+
         <div class="verdict" :class="score.scoreOutOf10 >= 5 ? 'verdict-good' : 'verdict-bad'">
           <span v-if="score.scoreOutOf10 >= 8">Proper legend. 👏</span>
           <span v-else-if="score.scoreOutOf10 >= 5">Solid effort — keep it going.</span>
@@ -314,5 +320,21 @@ export default {
   text-align: center;
   color: var(--pf-muted);
   font-size: 0.9rem;
+}
+
+/* Time display */
+.time-taken {
+  margin-top: 8px;
+  text-align: center;
+}
+.time-label {
+  color: rgba(0,0,0,0.6);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.time-value {
+  font-weight: 800;
+  margin-top: 4px;
+  font-size: 1.25rem;
 }
 </style>
