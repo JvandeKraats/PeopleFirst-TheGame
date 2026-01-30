@@ -19,9 +19,6 @@ const router = createRouter({
     {
       path: "/game",
       name: "game",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("../views/GameView.vue"),
     },
     {
@@ -32,17 +29,26 @@ const router = createRouter({
     {
       path: "/match",
       name: "match",
-      component: () => import("../views/MatchView.vue"),
+      component: () => import("../views/MatchView.vue").catch(() => {
+        console.error("Failed to load MatchView");
+        return import("../views/GameView.vue");
+      }),
     },
     {
       path: "/memory",
       name: "memory",
-      component: () => import("../views/MemoryGameView.vue"),
+      component: () => import("../views/MemoryGameView.vue").catch(() => {
+        console.error("Failed to load MemoryGameView");
+        return import("../views/GameView.vue");
+      }),
     },
     {
       path: "/find-jesse",
       name: "findJesse",
-      component: () => import("../views/FindJesseView.vue"),
+      component: () => import("../views/FindJesseView.vue").catch(() => {
+        console.error("Failed to load FindJesseView");
+        return import("../views/GameView.vue");
+      }),
     },
     {
       path: "/find-jesse-result",
@@ -52,12 +58,18 @@ const router = createRouter({
     {
       path: "/silhouette-quiz",
       name: "silhouetteQuiz",
-      component: () => import("../views/SilhouetteQuizView.vue"),
+      component: () => import("../views/SilhouetteQuizView.vue").catch(() => {
+        console.error("Failed to load SilhouetteQuizView");
+        return import("../views/GameView.vue");
+      }),
     },
     {
       path: "/progressive-reveal",
       name: "progressiveReveal",
-      component: () => import("../views/ProgressiveRevealView.vue"),
+      component: () => import("../views/ProgressiveRevealView.vue").catch(() => {
+        console.error("Failed to load ProgressiveRevealView");
+        return import("../views/GameView.vue");
+      }),
     },
     {
       path: "/progressive-reveal-result",
@@ -65,6 +77,11 @@ const router = createRouter({
       component: () => import("../components/ProgressiveRevealResult.vue"),
     },
   ],
+});
+
+// Add global error handler for navigation
+router.onError((error) => {
+  console.error("Router error:", error);
 });
 
 export default router;
