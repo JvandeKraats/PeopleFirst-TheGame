@@ -76,7 +76,9 @@ export default {
     _sanitizeUrl(v) {
       const s = (v ?? '').toString().trim()
       const lower = s.toLowerCase()
+      const lowerNoLeadingSlash = lower.replace(/^\/+/, '')
       if (!s || lower === 'undefined' || lower === 'null') return ''
+      if (lowerNoLeadingSlash === 'undefined' || lowerNoLeadingSlash === 'null') return ''
       return s
     },
     _handleKeyDown(e) {
