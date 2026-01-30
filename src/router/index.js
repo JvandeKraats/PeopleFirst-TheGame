@@ -21,6 +21,11 @@ const router = createRouter({
       path: '/result',
       name: 'result',
       component: () => import('../views/ResultView.vue')
+    },
+    {
+      path: '/match',
+      name: 'match',
+      component: () => import('../views/MatchView.vue')
     }
   ]
 })
