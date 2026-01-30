@@ -6,14 +6,11 @@
       <p>Match pairs of names and photos! Click cards to reveal them, and find matching pairs. Win by matching all 10 people!</p>
     </div>
 
-    <div v-if="!gameStarted" class="start-screen">
-      <button @click="startGame" class="btn btn-primary">Start Game</button>
-    </div>
-
-    <div v-else-if="gameWon" class="win-screen">
+    <div v-if="gameWon" class="win-screen">
       <h3>🎉 Congratulations! You won! 🎉</h3>
       <p>You matched all pairs!</p>
       <button @click="resetGame" class="btn btn-primary">Play Again</button>
+      <button @click="goToMainPage" class="btn btn-secondary ml-3">Return to Main Page</button>
     </div>
 
     <div v-else class="game-board">
@@ -39,6 +36,7 @@
         </div>
       </div>
       <button @click="resetGame" class="btn btn-secondary mt-3">Reset Game</button>
+      <button @click="goToMainPage" class="btn btn-secondary ml-3">Return to Main Page</button>
     </div>
   </div>
 </template>
@@ -55,6 +53,9 @@ export default {
       gameStarted: false,
       gameWon: false,
     };
+  },
+  mounted() {
+    this.startGame();
   },
   methods: {
     async loadPeopleData() {
@@ -172,6 +173,10 @@ export default {
       this.gameWon = false;
       this.isChecking = false;
     },
+
+    goToMainPage() {
+      this.$router.push('/');
+    },
   },
 };
 </script>
@@ -187,6 +192,20 @@ export default {
 h2 {
   margin-bottom: 20px;
   font-size: 2rem;
+  color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  h2 {
+    color: rgba(255, 255, 255, 0.92);
+  }
+}
+
+:root[data-theme="dark"] h2 {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+:root[data-theme="light"] h2 {
   color: #333;
 }
 
@@ -337,6 +356,10 @@ h2 {
 
 .mt-3 {
   margin-top: 20px;
+}
+
+.ml-3 {
+  margin-left: 15px;
 }
 
 @media (max-width: 768px) {
