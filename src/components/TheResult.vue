@@ -134,19 +134,19 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 18px;
-  background: #ffffff;
+  background: var(--pf-bg);
   font-family: Calibri, "Segoe UI", Arial, sans-serif;
-  color: #111;
+  color: var(--pf-text);
 }
 
 .card {
   width: 100%;
   max-width: 520px;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.08);
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border-soft);
   border-radius: 16px;
   padding: 18px;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+  box-shadow: 0 10px 28px var(--pf-shadow);
 }
 
 /* Header */
@@ -162,7 +162,7 @@ export default {
 .sub {
   margin-top: 4px;
   font-size: 0.95rem;
-  color: rgba(0,0,0,0.60);
+  color: var(--pf-muted);
 }
 
 /* Score block */
@@ -172,7 +172,7 @@ export default {
 }
 .score-label {
   font-weight: 700;
-  color: rgba(0,0,0,0.65);
+  color: var(--pf-muted);
   margin-bottom: 6px;
 }
 .score-value {
@@ -182,13 +182,13 @@ export default {
   margin: 6px 0;
 }
 .score-good {
-  color: #2ea44f;
+  color: var(--pf-accent);
 }
 .score-bad {
-  color: #c62828;
+  color: var(--pf-danger);
 }
 .score-meta {
-  color: rgba(0,0,0,0.60);
+  color: var(--pf-muted);
   font-weight: 600;
   margin-top: 6px;
 }
@@ -211,7 +211,7 @@ export default {
 /* Wrong answers */
 .wrong {
   margin-top: 14px;
-  border-top: 1px solid rgba(0,0,0,0.08);
+  border-top: 1px solid var(--pf-border-soft);
   padding-top: 14px;
 }
 .wrong-title {
@@ -225,16 +225,16 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-  color: rgba(0,0,0,0.72);
+  color: var(--pf-muted-2);
 }
 .wrong-item {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 10px;
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid var(--pf-border-soft);
   border-radius: 12px;
-  background: rgba(0,0,0,0.02);
+  background: var(--pf-hover);
 }
 .wrong-text {
   display: flex;
@@ -248,7 +248,7 @@ export default {
   object-fit: cover;
   flex: 0 0 auto;
   border: 2px solid rgba(46,164,79,0.18);
-  background: #f6f6f6;
+  background: var(--pf-surface-2);
 }
 .wrong-name {
   font-weight: 700;
@@ -259,7 +259,7 @@ export default {
   padding: 10px 12px;
   border-radius: 12px;
   background: rgba(0, 120, 212, 0.10);
-  color: rgba(0,0,0,0.75);
+  color: var(--pf-text);
   font-weight: 700;
 }
 
@@ -277,7 +277,7 @@ export default {
 
 .close-line {
   font-weight: 600;
-  color: rgba(0,0,0,0.62);
+  color: var(--pf-muted);
 }
 
 @media (min-width: 520px) {
@@ -302,7 +302,7 @@ export default {
   font-size: 1rem;
 }
 .btn-primary {
-  background: #2ea44f;
+  background: var(--pf-accent);
   color: #fff;
 }
 .btn-primary:hover {
@@ -312,7 +312,7 @@ export default {
 .footer {
   margin-top: 14px;
   text-align: center;
-  color: rgba(0,0,0,0.55);
+  color: var(--pf-muted);
   font-size: 0.9rem;
 }
 </style>
