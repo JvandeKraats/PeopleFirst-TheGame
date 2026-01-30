@@ -297,6 +297,7 @@ export default {
   perspective: 1000px;
   cursor: pointer;
   min-height: 120px;
+  max-width: 100%;
 }
 
 .memory-card.disabled {
@@ -412,17 +413,76 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .memory-grid {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap: 10px;
+  .game-shell {
+    padding: 10px;
   }
 
   .card {
-    min-height: 80px;
+    padding: 12px;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .memory-card {
+    min-height: 60px;
+  }
+
+  .card-front {
+    font-size: 2rem;
   }
 
   .card-name {
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+
+  .game-description {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-shell {
+    padding: 5px;
+  }
+
+  .card {
+    padding: 8px;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 6px;
+    padding: 5px;
+  }
+
+  .memory-card {
+    min-height: 50px;
+  }
+
+  .card-front {
+    font-size: 1.5rem;
+  }
+
+  .card-name {
+    font-size: 0.65rem;
+    padding: 3px;
+  }
+
+  .game-description {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .game-description p {
     font-size: 0.8rem;
   }
 }

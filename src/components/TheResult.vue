@@ -258,11 +258,11 @@ export default {
 }
 .verdict-good {
   background: rgba(46,164,79,0.12);
-  color: #1b5e20;
+  color: var(--pf-muted-2);
 }
 .verdict-bad {
   background: rgba(198,40,40,0.10);
-  color: #8e0000;
+  color: var(--pf-muted-2);
 }
 
 /* Wrong answers */

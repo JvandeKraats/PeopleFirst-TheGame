@@ -3,6 +3,8 @@
  * Creates silhouettes by detecting the person outline in photos
  */
 
+import { SelfieSegmentation } from '@mediapipe/selfie_segmentation'
+
 let segmentationModel = null
 let isInitializing = false
 let initPromise = null
@@ -42,12 +44,6 @@ export async function initSegmentation() {
   isInitializing = true
   initPromise = (async () => {
     try {
-      // Load MediaPipe from CDN
-      await loadMediaPipeScript()
-
-      // Access the global SelfieSegmentation class
-      const SelfieSegmentation = window.SelfieSegmentation
-      
       segmentationModel = new SelfieSegmentation({
         locateFile: (file) => {
           return `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`
