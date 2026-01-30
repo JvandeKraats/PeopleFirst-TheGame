@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import StartView from "../views/StartView.vue";
+import RegionSelectView from "../views/RegionSelectView.vue";
 
 const router = createRouter({
   // Hash routing avoids GitHub Pages 404s on refresh/deep links.
@@ -7,6 +8,11 @@ const router = createRouter({
   routes: [
     {
       path: "/",
+      name: "regionSelect",
+      component: RegionSelectView,
+    },
+    {
+      path: "/bnl",
       name: "home",
       component: StartView,
     },
