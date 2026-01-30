@@ -71,7 +71,8 @@ export default {
     },
     _sanitizeUrl(v) {
       const s = (v ?? '').toString().trim()
-      if (!s || s === 'undefined' || s === 'null') return ''
+      const lower = s.toLowerCase()
+      if (!s || lower === 'undefined' || lower === 'null') return ''
       return s
     },
     _normalizeName(s) {
@@ -215,9 +216,10 @@ export default {
           totalGoodAnswers++;
         } else {
           const guess = (this.collegas[i].answer || '').toString().trim()
+          const imgUrl = this._sanitizeUrl(this.collegas[i].link) || this.fallbackAvatarUrl
           wrongAnswers.push({
             name: this.collegas[i].firstName,
-            imgUrl: this._sanitizeUrl(this.collegas[i].link) || this.fallbackAvatarUrl,
+            imgUrl,
             guess,
             isClose: !this.isEasyMode && this._isReallyCloseGuess(guess, this.collegas[i].firstName)
           });

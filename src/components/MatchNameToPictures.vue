@@ -75,7 +75,8 @@ export default {
     },
     _sanitizeUrl(v) {
       const s = (v ?? '').toString().trim()
-      if (!s || s === 'undefined' || s === 'null') return ''
+      const lower = s.toLowerCase()
+      if (!s || lower === 'undefined' || lower === 'null') return ''
       return s
     },
     _handleKeyDown(e) {
