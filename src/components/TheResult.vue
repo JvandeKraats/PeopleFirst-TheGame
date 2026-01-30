@@ -2,7 +2,7 @@
   <main class="result-shell">
     <section class="card">
       <header class="header">
-        <div class="flex items-center xl:pr-[1.813rem]" style="opacity: 1;"><a href="/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 85 29" class="w-[5.375rem]"><path fill="currentColor" fill-rule="evenodd" d="M44.695 15.768H33.012c.167 2.07 1.715 3.394 4.099 3.31 1.478 0 2.774-.62 3.471-1.817h3.667c-1.227 3.21-3.792 5.028-7.027 5.028-2.175 0-3.973-.747-5.479-2.268-1.366-1.45-2.175-3.465-2.175-5.408 0-2.057.697-3.874 2.05-5.324 1.478-1.564 3.402-2.437 5.395-2.437 2.482 0 4.782 1.268 6.33 3.338.906 1.324 1.352 2.887 1.352 4.831zm-11.64-2.761h7.96c-.544-1.944-1.966-3.014-4.113-3.014-1.729 0-3.36 1.197-3.848 3.014M49.838 2.57V8.47c1.31-1.07 2.747-1.493 4.517-1.45 1.924 0 3.68.62 5.033 1.943 1.631 1.45 2.496 3.592 2.496 5.733 0 2.323-.976 4.507-2.733 6.028-1.31 1.07-2.914 1.69-4.782 1.69-1.715 0-3.178-.493-4.53-1.563v1.197h-3.347V2.569zm4.293 7.774c-2.37 0-4.168 1.888-4.168 4.409 0 2.394 1.882 4.281 3.987 4.267 2.621 0 4.42-1.901 4.42-4.338 0-2.324-1.869-4.338-4.239-4.338M67.447 2.57h-3.234v3.267h3.234zm0 4.789h-3.234v14.69h3.234zM85 22.05h-3.2479999999999998v-1.817c-.808 1.52-2.286 2.14-4.53 2.14-4.28 0-7.515-3.31-7.515-7.718 0-2.07.697-3.958 2.05-5.408 1.477-1.564 3.22-2.268 5.395-2.268 2.119 0 3.625.69 4.614 2.14V7.36h3.235zm-7.709-11.762c-2.3 0-4.168 1.817-4.168 4.211 0 2.592 1.924 4.409 4.224 4.409 2.12 0 4.043-1.944 4.043-4.211 0-2.521-1.98-4.409-4.099-4.409" clip-rule="evenodd"></path><path fill="currentColor" d="M.125 28.333h8.827L18.5 18.73l9.521 9.603h8.938l-13.99-14.11L37.085 0h-8.938L18.5 9.743 8.91 0H0l14.032 14.223z"></path></svg></a></div>
+        <div class="flex items-center xl:pr-[1.813rem]" style="opacity: 1;"><router-link to="/" aria-label="Home"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 85 29" class="w-[5.375rem]"><path fill="currentColor" fill-rule="evenodd" d="M44.695 15.768H33.012c.167 2.07 1.715 3.394 4.099 3.31 1.478 0 2.774-.62 3.471-1.817h3.667c-1.227 3.21-3.792 5.028-7.027 5.028-2.175 0-3.973-.747-5.479-2.268-1.366-1.45-2.175-3.465-2.175-5.408 0-2.057.697-3.874 2.05-5.324 1.478-1.564 3.402-2.437 5.395-2.437 2.482 0 4.782 1.268 6.33 3.338.906 1.324 1.352 2.887 1.352 4.831zm-11.64-2.761h7.96c-.544-1.944-1.966-3.014-4.113-3.014-1.729 0-3.36 1.197-3.848 3.014M49.838 2.57V8.47c1.31-1.07 2.747-1.493 4.517-1.45 1.924 0 3.68.62 5.033 1.943 1.631 1.45 2.496 3.592 2.496 5.733 0 2.323-.976 4.507-2.733 6.028-1.31 1.07-2.914 1.69-4.782 1.69-1.715 0-3.178-.493-4.53-1.563v1.197h-3.347V2.569zm4.293 7.774c-2.37 0-4.168 1.888-4.168 4.409 0 2.394 1.882 4.281 3.987 4.267 2.621 0 4.42-1.901 4.42-4.338 0-2.324-1.869-4.338-4.239-4.338M67.447 2.57h-3.234v3.267h3.234zm0 4.789h-3.234v14.69h3.234zM85 22.05h-3.2479999999999998v-1.817c-.808 1.52-2.286 2.14-4.53 2.14-4.28 0-7.515-3.31-7.515-7.718 0-2.07.697-3.958 2.05-5.408 1.477-1.564 3.22-2.268 5.395-2.268 2.119 0 3.625.69 4.614 2.14V7.36h3.235zm-7.709-11.762c-2.3 0-4.168 1.817-4.168 4.211 0 2.592 1.924 4.409 4.224 4.409 2.12 0 4.043-1.944 4.043-4.211 0-2.521-1.98-4.409-4.099-4.409" clip-rule="evenodd"></path><path fill="currentColor" d="M.125 28.333h8.827L18.5 18.73l9.521 9.603h8.938l-13.99-14.11L37.085 0h-8.938L18.5 9.743 8.91 0H0l14.032 14.223z"></path></svg></router-link></div>
         <h1 class="title">People First – The Game</h1>
         <div class="subtitle">
           The Magic of Innovation Days
@@ -21,6 +21,12 @@
 
         <div class="score-meta">
           {{ score.totalGoodAnswers }} / {{ totalQuestions }} correct
+        </div>
+
+        <!-- Added: show elapsed time when present in the saved score -->
+        <div v-if="score.elapsed" class="time-taken">
+          <div class="time-label">Time</div>
+          <div class="time-value">{{ score.elapsed }}</div>
         </div>
 
         <div class="verdict" :class="score.scoreOutOf10 >= 5 ? 'verdict-good' : 'verdict-bad'">
@@ -44,7 +50,7 @@
                 :src="missedPhotoSrc(w)"
                 :alt="w.name ? `Photo of ${w.name}` : 'Missed person photo'"
                 loading="lazy"
-                @error="(e) => (e.target.src = '/fallback-photos/fallback-avatar.png')"
+              @error="onPhotoError"
             />
 
             <div class="wrong-text">
@@ -86,6 +92,9 @@ export default {
     };
   },
   computed: {
+    fallbackAvatarUrl() {
+      return new URL('fallback-photos/fallback-avatar.png', import.meta.env.BASE_URL).href
+    },
     isHardMode() {
       const mode = (this.score?.mode || '').toString().toLowerCase()
       if (mode) return mode === 'hard'
@@ -111,14 +120,16 @@ export default {
     }
   },
   methods: {
+    onPhotoError(e) {
+      if (e?.target) e.target.src = this.fallbackAvatarUrl
+    },
     missedPhotoSrc(w) {
       // Support both current and older score shapes
-      return (
-          w?.imgUrl ||
-          w?.link ||
-          w?.photo ||
-          "/fallback-photos/fallback-avatar.png"
-      );
+      const raw = (w?.imgUrl || w?.link || w?.photo || '').toString()
+      if (!raw) return this.fallbackAvatarUrl
+      if (/^https?:\/\//i.test(raw)) return raw
+      if (raw.startsWith('/')) return `${import.meta.env.BASE_URL}${raw.slice(1)}`
+      return new URL(raw, import.meta.env.BASE_URL).href
     },
     resetScore() {
       this.$router.push("/");
@@ -314,5 +325,21 @@ export default {
   text-align: center;
   color: var(--pf-muted);
   font-size: 0.9rem;
+}
+
+/* Time display */
+.time-taken {
+  margin-top: 8px;
+  text-align: center;
+}
+.time-label {
+  color: rgba(0,0,0,0.6);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.time-value {
+  font-weight: 800;
+  margin-top: 4px;
+  font-size: 1.25rem;
 }
 </style>

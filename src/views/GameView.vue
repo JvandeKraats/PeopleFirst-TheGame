@@ -2,10 +2,18 @@
 import TheGame from '../components/TheGame.vue'
 import fallbackPeople from '../data/people-fallback.json'
 
+function normalizePhotoUrl(url) {
+  if (!url) return ''
+  if (/^https?:\/\//i.test(url)) return url
+  const base = import.meta.env.BASE_URL
+  if (url.startsWith('/')) return `${base}${url.slice(1)}`
+  return new URL(url, base).href
+}
+
 export default {
   components: { TheGame },
   data() {
-    return { myList: [] }
+    return { myList: [], trackTime: false }
   },
   computed: {
     mode() {
@@ -28,17 +36,21 @@ export default {
         firstName,
         answer: '',
         // use the JSON photo path exactly
-        link: p.photo || '/fallback-photos/fallback.jpg'
+        link: normalizePhotoUrl(p.photo || '/fallback-photos/fallback.jpg')
       }
     }
   },
   created() {
     const people = fallbackPeople?.value ?? []
     this.myList = this.pickRandomTen(people).map(this.mapToGameModel)
+
+    // Read time tracking flag from query
+    const timeFlag = this.$route?.query?.time
+    this.trackTime = !!timeFlag
   }
 }
 </script>
 
 <template>
-  <TheGame :collegas="myList" :mode="mode" />
+  <TheGame :collegas="myList" :mode="mode" :trackTime="trackTime" />
 </template>

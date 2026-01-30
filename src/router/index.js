@@ -1,8 +1,9 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import StartView from "../views/StartView.vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // Hash routing avoids GitHub Pages 404s on refresh/deep links.
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
@@ -23,19 +24,14 @@ const router = createRouter({
       component: () => import("../views/ResultView.vue"),
     },
     {
-      path: "/memory",
-      name: "memory",
-      component: () => import("../views/MemoryGameView.vue"),
-    },
-    {
       path: "/match",
       name: "match",
       component: () => import("../views/MatchView.vue"),
     },
     {
-      path: "/find-jesse",
-      name: "findJesse",
-      component: () => import("../views/FindJesseView.vue"),
+      path: "/memory",
+      name: "memory",
+      component: () => import("../views/MemoryGameView.vue"),
     },
   ],
 });
