@@ -25,13 +25,22 @@ Follow these steps exactly when adding a new game mode:
 - Accept props: `collegas` (Array), any game-specific props
 - Emit `@submit` event with score object when game completes
 - Use CSS variables for all styling (NO hardcoded colors)
-- Include error handling for images: `@error="(e) => (e.target.src = '/fallback-photos/fallback-avatar.png')"`
+- Import photo utilities: `import { getFallbackAvatarUrl } from '../utils/photo'`
+- Use computed property for fallback: `fallbackAvatarUrl() { return getFallbackAvatarUrl() }`
+- Include error handling for images: `@error="(e) => (e.target.src = fallbackAvatarUrl)"`
 
 ```vue
 <script>
+import { getFallbackAvatarUrl } from '../utils/photo'
+
 export default {
   props: {
     collegas: { type: Array, required: true }
+  },
+  computed: {
+    fallbackAvatarUrl() {
+      return getFallbackAvatarUrl()
+    }
   },
   methods: {
     handleSubmit() {
@@ -48,7 +57,9 @@ export default {
 **Purpose:** Load data and manage game state  
 **Must do:**
 - Import from `'../data/people-fallback.json'`
+- Add `normalizePhotoUrl` function to handle base URL properly (see pattern below)
 - Shuffle data: `people.slice().sort(() => Math.random() - 0.5)`
+- Use `normalizePhotoUrl()` for all photo paths from data
 - Handle `@submit` event: store score in `localStorage.setItem('gameScore', JSON.stringify(score))`
 - Navigate to result page: `this.$router.push('/result')` or custom result route
 
@@ -57,6 +68,14 @@ export default {
 import GameComponent from '../components/YourGameComponent.vue';
 import fallbackPeople from '../data/people-fallback.json';
 
+function normalizePhotoUrl(url) {
+  if (!url) return ''
+  if (/^https?:\/\//i.test(url)) return url
+  const base = import.meta.env.BASE_URL
+  if (url.startsWith('/')) return `${base}${url.slice(1)}`
+  return new URL(url, base).href
+}
+
 export default {
   components: { GameComponent },
   data() {
@@ -64,10 +83,15 @@ export default {
   },
   created() {
     const people = fallbackPeople?.value || [];
-    this.collegas = this.shuffle(people).slice(0, 10);
+    this.collegas = this.shuffle(people).slice(0, 10).map(p => ({
+      ...p,
+      link: normalizePhotoUrl(p.photo || '/fallback-photos/fallback-avatar.png')
+    }));
   },
   methods: {
     shuffle(arr) {
+      return arr.slice().sort(() => Math.random() - 0.5);
+    },
       return arr.slice().sort(() => Math.random() - 0.5);
     },
     handleSubmit(score) {
@@ -353,11 +377,25 @@ color: var(--pf-text);
 
 ### 2. Image Error Handling (REQUIRED)
 ```vue
-<img 
-  :src="person.photo"
-  @error="(e) => (e.target.src = '/fallback-photos/fallback-avatar.png')"
-  alt="Colleague photo"
-/>
+<script>
+import { getFallbackAvatarUrl } from '../utils/photo'
+
+export default {
+  computed: {
+    fallbackAvatarUrl() {
+      return getFallbackAvatarUrl()
+    }
+  }
+}
+</script>
+
+<template>
+  <img 
+    :src="person.photo"
+    @error="(e) => (e.target.src = fallbackAvatarUrl)"
+    alt="Colleague photo"
+  />
+</template>
 ```
 
 ### 3. Array Shuffling (REQUIRED)

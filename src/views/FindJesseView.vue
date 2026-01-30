@@ -2,6 +2,14 @@
 import FindJesseGame from '../components/FindJesseGame.vue';
 import fallbackPeople from '../data/people-fallback.json';
 
+function normalizePhotoUrl(url) {
+  if (!url) return ''
+  if (/^https?:\/\//i.test(url)) return url
+  const base = import.meta.env.BASE_URL
+  if (url.startsWith('/')) return `${base}${url.slice(1)}`
+  return new URL(url, base).href
+}
+
 export default {
   components: { FindJesseGame },
   data() {
@@ -50,7 +58,7 @@ export default {
         id: p.id,
         firstName: p.givenName || (p.displayName || '').split(' ')[0] || '',
         name: p.displayName,
-        link: p.photo || '/fallback-photos/fallback-avatar.png',
+        link: normalizePhotoUrl(p.photo || '/fallback-photos/fallback-avatar.png'),
         isJesse: this.jesseIds.includes(p.id)
       }));
     },
