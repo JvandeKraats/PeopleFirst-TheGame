@@ -5,12 +5,17 @@ export default {
     mode: {
       type: String,
       default: 'hard'
+    },
+    trackTime: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       currentIndex: 0,
-      choicesById: {}
+      choicesById: {},
+      _startTime: null
     };
   },
   computed: {
@@ -48,6 +53,11 @@ export default {
   mounted() {
     // Listen for Enter key to advance to next item (or submit) when allowed.
     window.addEventListener('keydown', this._handleKeyDown)
+
+    // Start timing when the game actually mounts, if requested
+    if (this.trackTime) {
+      this._startTime = Date.now()
+    }
   },
   beforeUnmount() {
     window.removeEventListener('keydown', this._handleKeyDown)
@@ -94,6 +104,12 @@ export default {
     },
     submitAnswers() {
       const score = this.calculateScore();
+      // If time tracking is enabled, compute elapsed ms and add to the score object
+      if (this.trackTime && this._startTime) {
+        const elapsedMs = Date.now() - this._startTime
+        score.elapsedMs = elapsedMs
+        score.elapsed = msToHuman(elapsedMs)
+      }
       localStorage.setItem("gameScore", JSON.stringify(score));
       this.$router.push("/result");
     },
@@ -157,9 +173,17 @@ export default {
         totalGoodAnswers,
         wrongAnswers,
       };
-    },
-  },
+    }
+  }
 };
+
+// Helper to format ms to human readable string (mm:ss)
+function msToHuman(ms) {
+  const totalSeconds = Math.round(ms / 1000)
+  const minutes = Math.floor(totalSeconds / 60)
+  const seconds = totalSeconds % 60
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+}
 </script>
 
 <template>
