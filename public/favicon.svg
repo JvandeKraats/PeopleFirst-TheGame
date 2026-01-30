@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="50" fill="url(#mainGradient)"/>
+
+  <!-- Central large person (main focus) -->
+  <!-- Head -->
+  <circle cx="50" cy="30" r="14" fill="#fff" opacity="0.95"/>
+  <!-- Body -->
+  <rect x="42" y="48" width="16" height="20" rx="3" fill="#fff" opacity="0.95"/>
+  <!-- Left arm -->
+  <rect x="30" y="50" width="12" height="5" rx="2.5" fill="#fff" opacity="0.95"/>
+  <!-- Right arm -->
+  <rect x="58" y="50" width="12" height="5" rx="2.5" fill="#fff" opacity="0.95"/>
+
+  <!-- Face -->
+  <!-- Eyes -->
+  <circle cx="46" cy="27" r="2" fill="#3b82f6"/>
+  <circle cx="54" cy="27" r="2" fill="#3b82f6"/>
+  <!-- Smile -->
+  <path d="M 46 32 Q 50 34 54 32" stroke="#3b82f6" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Left satellite person (smaller, supporting) -->
+  <g opacity="0.85">
+    <circle cx="25" cy="65" r="8" fill="#fbbf24"/>
+    <circle cx="25" cy="75" r="5" fill="#fbbf24"/>
+    <circle cx="22" cy="63" r="1.2" fill="#8b5cf6"/>
+    <circle cx="28" cy="63" r="1.2" fill="#8b5cf6"/>
+    <path d="M 22 66 Q 25 67.5 28 66" stroke="#8b5cf6" stroke-width="1" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Right satellite person (smaller, supporting) -->
+  <g opacity="0.85">
+    <circle cx="75" cy="65" r="8" fill="#ec4899"/>
+    <circle cx="75" cy="75" r="5" fill="#ec4899"/>
+    <circle cx="72" cy="63" r="1.2" fill="#fff"/>
+    <circle cx="78" cy="63" r="1.2" fill="#fff"/>
+    <path d="M 72 66 Q 75 67.5 78 66" stroke="#fff" stroke-width="1" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Game layer - subtle dice elements -->
+  <!-- Top left dice -->
+  <g opacity="0.5">
+    <rect x="12" y="12" width="8" height="8" rx="1" fill="none" stroke="#fff" stroke-width="0.8"/>
+    <circle cx="14" cy="14" r="0.8" fill="#fff"/>
+    <circle cx="18" cy="18" r="0.8" fill="#fff"/>
+  </g>
+
+  <!-- Bottom right dice -->
+  <g opacity="0.5">
+    <rect x="80" y="80" width="8" height="8" rx="1" fill="none" stroke="#fff" stroke-width="0.8"/>
+    <circle cx="82" cy="84" r="0.8" fill="#fff"/>
+    <circle cx="86" cy="84" r="0.8" fill="#fff"/>
+  </g>
+</svg>
