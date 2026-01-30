@@ -128,6 +128,6 @@ function goToProgressiveReveal() {
 }
 
 a:active svg {
-  color: var(--pf-accent);
+  color: var(--pf-logo-active);
 }
 </style>

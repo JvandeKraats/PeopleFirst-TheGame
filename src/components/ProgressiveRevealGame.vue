@@ -228,6 +228,10 @@ export default {
   margin-bottom: 14px;
 }
 
+.header :deep(a:active svg) {
+  color: var(--pf-logo-active);
+}
+
 .meta {
   display: flex;
   align-items: baseline;
