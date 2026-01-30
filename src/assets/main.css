@@ -101,13 +101,13 @@ html, body {
 }
 
 .start-button--xebia {
-  background: #764ba2;
+  background: var(--pf-xebia-purple);
   color: #fff;
   border: none;
 }
 
 .start-button--xebia:hover {
-  background: #6b3f8e;
+  filter: brightness(0.95);
 }
 
 /* Hint */
