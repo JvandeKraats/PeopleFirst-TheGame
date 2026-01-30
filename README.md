@@ -80,3 +80,16 @@ npm install
 ```sh
 npm run dev
 ``` 
+
+## Deploy to GitHub Pages
+
+This repo is set up to deploy the Vite build output (`dist/`) to GitHub Pages on every push to `main`.
+
+1) In GitHub: **Settings → Pages → Source → GitHub Actions**
+
+2) Push to `main` and wait for the workflow in [​.github/workflows/workflow.yml](.github/workflows/workflow.yml)
+
+Notes:
+- The workflow sets `VITE_BASE` to `/<repo>/` so assets work on a GitHub Pages **project** site.
+- The router uses hash mode, so deep links work on Pages (URLs look like `/#/game`).
+- If you use a custom domain or a user/org Pages site, set `VITE_BASE` to `/` in the workflow.

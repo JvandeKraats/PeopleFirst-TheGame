@@ -40,6 +40,16 @@
 </template>
 
 <script>
+import fallbackPeople from '../data/people-fallback.json'
+
+function normalizePhotoUrl(url) {
+  if (!url) return ''
+  if (/^https?:\/\//i.test(url)) return url
+  const base = import.meta.env.BASE_URL
+  if (url.startsWith('/')) return `${base}${url.slice(1)}`
+  return new URL(url, base).href
+}
+
 export default {
   data() {
     return {
@@ -55,10 +65,11 @@ export default {
   methods: {
     async loadPeopleData() {
       try {
-        // Try to load from fallback data
-        const response = await fetch('/src/data/people-fallback.json');
-        const data = await response.json();
-        this.people = data.value || data;
+        const data = fallbackPeople?.value ?? fallbackPeople
+        this.people = (data || []).map(p => ({
+          ...p,
+          photo: normalizePhotoUrl(p.photo)
+        }))
       } catch (error) {
         console.error('Error loading people data:', error);
         this.people = [];

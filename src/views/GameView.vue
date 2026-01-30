@@ -2,6 +2,14 @@
 import TheGame from '../components/TheGame.vue'
 import fallbackPeople from '../data/people-fallback.json'
 
+function normalizePhotoUrl(url) {
+  if (!url) return ''
+  if (/^https?:\/\//i.test(url)) return url
+  const base = import.meta.env.BASE_URL
+  if (url.startsWith('/')) return `${base}${url.slice(1)}`
+  return new URL(url, base).href
+}
+
 export default {
   components: { TheGame },
   data() {
@@ -28,7 +36,7 @@ export default {
         firstName,
         answer: '',
         // use the JSON photo path exactly
-        link: p.photo || '/fallback-photos/fallback.jpg'
+        link: normalizePhotoUrl(p.photo || '/fallback-photos/fallback.jpg')
       }
     }
   },
