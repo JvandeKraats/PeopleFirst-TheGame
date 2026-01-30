@@ -32,6 +32,11 @@
 
       <div v-if="score.wrongAnswers && score.wrongAnswers.length" class="wrong">
         <div class="wrong-title">Missed names</div>
+
+        <div v-if="isHardMode && closeMissesCount" class="close-callout" role="note">
+          You were really close on {{ closeMissesCount }} {{ closeMissesCount === 1 ? 'name' : 'names' }} — check the highlighted ones below.
+        </div>
+
         <ul class="wrong-list">
           <li v-for="(w, idx) in score.wrongAnswers" :key="idx" class="wrong-item">
             <img
@@ -41,7 +46,17 @@
                 loading="lazy"
                 @error="(e) => (e.target.src = '/fallback-photos/fallback-avatar.png')"
             />
-            <div class="wrong-name">{{ w.name }}</div>
+
+            <div class="wrong-text">
+              <div class="wrong-name">
+                {{ w.name }}
+                <span v-if="isHardMode && w.isClose" class="close-badge">Really close</span>
+              </div>
+
+              <div v-if="isHardMode && w.isClose && (w.guess || '').trim()" class="close-line">
+                You typed “{{ w.guess }}”.
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -71,6 +86,16 @@ export default {
     };
   },
   computed: {
+    isHardMode() {
+      const mode = (this.score?.mode || '').toString().toLowerCase()
+      if (mode) return mode === 'hard'
+      // Backward compatible inference: hard mode stores typed guesses.
+      return !!this.score?.wrongAnswers?.some(w => typeof w?.guess === 'string' && w.guess.trim())
+    },
+    closeMissesCount() {
+      if (!this.isHardMode) return 0
+      return (this.score?.wrongAnswers || []).filter(w => !!w?.isClose).length
+    },
     totalQuestions() {
       // The game uses 10, but we compute it safely.
       const wrong = this.score.wrongAnswers?.length ?? 0;
@@ -211,6 +236,11 @@ export default {
   border-radius: 12px;
   background: rgba(0,0,0,0.02);
 }
+.wrong-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
 .wrong-photo {
   width: 48px;
   height: 48px;
@@ -222,6 +252,32 @@ export default {
 }
 .wrong-name {
   font-weight: 700;
+}
+
+.close-callout {
+  margin: 8px 0 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(0, 120, 212, 0.10);
+  color: rgba(0,0,0,0.75);
+  font-weight: 700;
+}
+
+.close-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  background: rgba(0, 120, 212, 0.12);
+  color: #0b5cab;
+  vertical-align: middle;
+}
+
+.close-line {
+  font-weight: 600;
+  color: rgba(0,0,0,0.62);
 }
 
 @media (min-width: 520px) {

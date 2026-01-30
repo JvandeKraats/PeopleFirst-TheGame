@@ -53,6 +53,48 @@ export default {
     window.removeEventListener('keydown', this._handleKeyDown)
   },
   methods: {
+    _normalizeName(s) {
+      return (s || '').toString().trim().toLowerCase()
+    },
+    _levenshtein(a, b) {
+      // Iterative DP; good enough for short first names.
+      const s = this._normalizeName(a)
+      const t = this._normalizeName(b)
+      if (!s.length) return t.length
+      if (!t.length) return s.length
+
+      const prev = new Array(t.length + 1)
+      const curr = new Array(t.length + 1)
+      for (let j = 0; j <= t.length; j++) prev[j] = j
+
+      for (let i = 1; i <= s.length; i++) {
+        curr[0] = i
+        const sChar = s[i - 1]
+        for (let j = 1; j <= t.length; j++) {
+          const cost = sChar === t[j - 1] ? 0 : 1
+          curr[j] = Math.min(
+            prev[j] + 1, // delete
+            curr[j - 1] + 1, // insert
+            prev[j - 1] + cost // substitute
+          )
+        }
+        for (let j = 0; j <= t.length; j++) prev[j] = curr[j]
+      }
+
+      return prev[t.length]
+    },
+    _isReallyCloseGuess(guess, correctFirstName) {
+      const g = this._normalizeName(guess)
+      const c = this._normalizeName(correctFirstName)
+      if (!g || !c) return false
+      if (g === c) return false
+
+      // Heuristic thresholds that work well for short first names.
+      // Examples: jon↔john (1), sarah↔sara (1), steven↔stephen (2)
+      const maxDistance = c.length <= 4 ? 1 : 2
+      const distance = this._levenshtein(g, c)
+      return distance > 0 && distance <= maxDistance
+    },
     _handleKeyDown(e) {
       // In easy mode: allow numeric keys 1-4 to select the corresponding choice
       if (this.isEasyMode) {
@@ -145,14 +187,18 @@ export default {
         ) {
           totalGoodAnswers++;
         } else {
+          const guess = (this.collegas[i].answer || '').toString().trim()
           wrongAnswers.push({
             name: this.collegas[i].firstName,
             imgUrl: this.collegas[i].link,
+            guess,
+            isClose: !this.isEasyMode && this._isReallyCloseGuess(guess, this.collegas[i].firstName)
           });
         }
       }
 
       return {
+        mode: this.isEasyMode ? 'easy' : 'hard',
         scoreOutOf10: ((totalGoodAnswers / this.collegas.length) * 10).toFixed(1),
         totalGoodAnswers,
         wrongAnswers,
