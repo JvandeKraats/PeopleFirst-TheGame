@@ -152,6 +152,10 @@ export default {
   margin-bottom: 14px;
 }
 
+.header a:active svg {
+  color: #ff8c00;
+}
+
 .header a {
   display: inline-block;
 }
@@ -194,11 +198,11 @@ export default {
 }
 
 .score-good {
-  color: #2ea44f;
+  color: var(--pf-accent);
 }
 
 .score-bad {
-  color: #c62828;
+  color: var(--pf-danger);
 }
 
 .score-meta {
@@ -216,12 +220,12 @@ export default {
 
 .verdict-good {
   background: rgba(46, 164, 79, 0.12);
-  color: #1b5e20;
+  color: var(--pf-text);
 }
 
 .verdict-bad {
   background: rgba(198, 40, 40, 0.10);
-  color: #8e0000;
+  color: var(--pf-text);
 }
 
 /* Wrong answers sections */
