@@ -125,8 +125,9 @@ export default {
     },
     missedPhotoSrc(w) {
       // Support both current and older score shapes
-      const raw = (w?.imgUrl || w?.link || w?.photo || '').toString()
-      if (!raw) return this.fallbackAvatarUrl
+      const rawCandidate = w?.imgUrl ?? w?.link ?? w?.photo ?? ''
+      const raw = (rawCandidate ?? '').toString().trim()
+      if (!raw || raw === 'undefined' || raw === 'null') return this.fallbackAvatarUrl
       if (/^https?:\/\//i.test(raw)) return raw
       if (raw.startsWith('/')) return `${import.meta.env.BASE_URL}${raw.slice(1)}`
       return new URL(raw, import.meta.env.BASE_URL).href
