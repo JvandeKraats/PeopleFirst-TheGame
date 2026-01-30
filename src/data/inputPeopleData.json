@@ -1,4 +1,4 @@
-﻿{
+{
   "value": [
     {
       "id": "c6a696fc-3cdf-4539-b39f-7ac70674f668",
@@ -9,7 +9,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/7fc64622-0b73-4410-978c-a90cc12b1b96.jpg"
+      "photo": "/fallback-photos/7fc64622-0b73-4410-978c-a90cc12b1b96.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "42e0255b-3080-427a-818e-535297cdfe44",
@@ -20,7 +22,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/6c3150fc-69a6-41d1-83a1-651d6d91d13c.jpg"
+      "photo": "/fallback-photos/6c3150fc-69a6-41d1-83a1-651d6d91d13c.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "aca19697-b626-4ffb-bd16-2aeb26eacf27",
@@ -31,7 +35,11 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/88b046ca-64f6-455c-962f-7b92852c8d9c.jpg"
+      "photo": "/fallback-photos/88b046ca-64f6-455c-962f-7b92852c8d9c.jpg",
+      "certifications": [
+        "[[AZ-900 Azure Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "f8e6baf7-8a1a-432b-b979-2078514060cc",
@@ -42,7 +50,13 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/92b844ec-48c2-4cb5-81e6-2839b022dfdc.jpg"
+      "photo": "/fallback-photos/92b844ec-48c2-4cb5-81e6-2839b022dfdc.jpg",
+      "certifications": [
+        "[[SC-300 Identity and Access Administrator Associate]]",
+        "[[AZ-500 Azure Security Engineer Associate]]",
+        "[[SC-300 Identity and Access Administrator Associate]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "e83eeac0-cd44-47ce-a146-1dea2e8d6443",
@@ -53,7 +67,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/a24337e2-f960-4a2b-802c-bad3d06e7b05.jpg"
+      "photo": "/fallback-photos/a24337e2-f960-4a2b-802c-bad3d06e7b05.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "5cda16c3-bd66-4d4d-8021-c348a2484a71",
@@ -64,7 +80,15 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/afa265a4-8664-4e28-b47c-5f850d0c3864.jpg"
+      "photo": "/fallback-photos/afa265a4-8664-4e28-b47c-5f850d0c3864.jpg",
+      "certifications": [
+        "[[AZ-104 Azure Administrator Associate]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AZ-400 DevOps Engineer Expert]]",
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[PSM I Professional Scrum Master]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "a2bdbfa8-aae7-44e3-a602-0cc21e9ec31e",
@@ -75,7 +99,17 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/6fca952a-b694-47cf-ab89-a08e727d07e8.jpg"
+      "photo": "/fallback-photos/6fca952a-b694-47cf-ab89-a08e727d07e8.jpg",
+      "certifications": [
+        "[[AZ-400 DevOps Engineer Expert]]",
+        "[[GitHub Administration Certification]]",
+        "[[GitHub Actions Certification]]",
+        "[[GitHub Copilot Certification]]",
+        "[[GitHub Foundations Certification]]",
+        "[[PSM I Professional Scrum Master]]",
+        "[[GitHub Advanced Security Certification]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "b94496ca-5814-4df7-9ce1-a10d10c04eaa",
@@ -86,7 +120,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/35277b99-b43b-4790-bbcd-4003a2f80a4a.jpg"
+      "photo": "/fallback-photos/35277b99-b43b-4790-bbcd-4003a2f80a4a.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "7fcd5789-3e8a-42b5-a890-56800f0b0b27",
@@ -97,7 +133,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/59b3bbd2-6fb9-4e19-bfc8-3254f107602c.jpg"
+      "photo": "/fallback-photos/59b3bbd2-6fb9-4e19-bfc8-3254f107602c.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "71a6bb31-944f-41d9-a940-d8a0c6d41d02",
@@ -108,7 +146,18 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/e104d047-e1b5-4025-8c56-12afaae78e70.jpg"
+      "photo": "/fallback-photos/e104d047-e1b5-4025-8c56-12afaae78e70.jpg",
+      "certifications": [
+        "[[GitHub Actions Certification]]",
+        "[[GitHub Foundations Certification]]",
+        "[[GitHub Administration Certification]]",
+        "[[GitHub Advanced Security Certification]]",
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AZ-400 DevOps Engineer Expert]]",
+        "[[GitHub Copilot Certification]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "17c3acd7-5a28-4c25-bc54-f90a0f63b8b7",
@@ -119,7 +168,19 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/e1469a87-933a-4c84-9360-9915367c9d55.jpg"
+      "photo": "/fallback-photos/e1469a87-933a-4c84-9360-9915367c9d55.jpg",
+      "certifications": [
+        "[[GitHub Actions Certification]]",
+        "[[GitHub Administration Certification]]",
+        "[[GitHub Advanced Security Certification]]",
+        "[[GitHub Foundations Certification]]",
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[AZ-400 DevOps Engineer Expert]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AI-900 Azure AI Fundamentals]]",
+        "[[AI-102 Azure AI Engineer Associate]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "d9c1dcac-70c3-4993-82b3-b6d04dd3cf4b",
@@ -130,7 +191,11 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/d15b9188-fe6a-4169-94c9-72b3f31d256f.jpg"
+      "photo": "/fallback-photos/d15b9188-fe6a-4169-94c9-72b3f31d256f.jpg",
+      "certifications": [
+        "[[AZ-900 Azure Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "d4f06c92-c9fe-45a8-8faf-60933bc9ea30",
@@ -141,7 +206,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/d7750cb7-552f-40b7-9bfb-531d9fe24001.jpg"
+      "photo": "/fallback-photos/d7750cb7-552f-40b7-9bfb-531d9fe24001.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "653f2c17-dbdc-4ed6-bb51-b73dbe78c7e0",
@@ -152,7 +219,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/c2c2f143-9efc-4db5-8e05-352fef4946af.jpg"
+      "photo": "/fallback-photos/c2c2f143-9efc-4db5-8e05-352fef4946af.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "1907a04d-35a7-4012-8f20-30798798dfb2",
@@ -163,7 +232,15 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/ed3dd34a-b23c-494d-ad48-3dad77808704.jpg"
+      "photo": "/fallback-photos/ed3dd34a-b23c-494d-ad48-3dad77808704.jpg",
+      "certifications": [
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AZ-400 DevOps Engineer Expert]]",
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[PSD Professional Scrum Developer]]",
+        "[[PSM I Professional Scrum Master]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "3b2598d5-470c-4e41-b1ce-ff4492436428",
@@ -174,7 +251,13 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/45c1e7eb-eefc-4e68-aca3-59320dba80ea.jpg"
+      "photo": "/fallback-photos/45c1e7eb-eefc-4e68-aca3-59320dba80ea.jpg",
+      "certifications": [
+        "[[GitHub Actions Certification]]",
+        "[[AZ-700 Azure Network Engineer Associate]]",
+        "[[AZ-140 Azure Virtual Desktop Specialty]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "1d5edea4-78d4-4db8-bce1-a0a6519f9323",
@@ -185,7 +268,12 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/7d3c6b2a-4b08-496b-9a7d-8569f5efa3fa.jpg"
+      "photo": "/fallback-photos/7d3c6b2a-4b08-496b-9a7d-8569f5efa3fa.jpg",
+      "certifications": [
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[AZ-900 Azure Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "b86cb218-f1a1-447c-84f8-2b436a097e85",
@@ -196,7 +284,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/ef30dd8c-c6c3-4a60-9cf3-b58df5452f57.jpg"
+      "photo": "/fallback-photos/ef30dd8c-c6c3-4a60-9cf3-b58df5452f57.jpg",
+      "certifications": [],
+      "country": "NL"
     },
     {
       "id": "bc643f17-22a6-418b-8bac-82b759d57e2b",
@@ -207,7 +297,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/cf0634d6-8790-4c76-80ba-46e7385a60e3.jpg"
+      "photo": "/fallback-photos/cf0634d6-8790-4c76-80ba-46e7385a60e3.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "f7e56a9a-e0ac-44d5-9ba2-91832fbff8d2",
@@ -218,7 +310,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/c980a16c-e52b-417f-978b-70894caebd19.jpg"
+      "photo": "/fallback-photos/c980a16c-e52b-417f-978b-70894caebd19.jpg",
+      "certifications": [],
+      "country": "NL"
     },
     {
       "id": "ba32791f-db45-4b6a-bb81-ec1beaa00d05",
@@ -229,7 +323,11 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/0bb44a33-823a-4747-9271-256c46161dac.jpg"
+      "photo": "/fallback-photos/0bb44a33-823a-4747-9271-256c46161dac.jpg",
+      "certifications": [
+        "[[AZ-900 Azure Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "6ce5fdcc-10b4-4a17-89b3-9e033d0a0ed7",
@@ -240,7 +338,12 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/3ba22002-0500-4a52-b9e8-5a6179c6866c.jpg"
+      "photo": "/fallback-photos/3ba22002-0500-4a52-b9e8-5a6179c6866c.jpg",
+      "certifications": [
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[AZ-900 Azure Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "d864fefa-e7ec-4596-8be9-74542bb992d8",
@@ -251,7 +354,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/84aeca96-5bf9-4d39-9193-b1a9de653fde.jpg"
+      "photo": "/fallback-photos/84aeca96-5bf9-4d39-9193-b1a9de653fde.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "d0b28826-4da1-4c59-ab0b-dcb4b5796630",
@@ -262,7 +367,11 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/130492e6-5776-4b6f-81c0-fd87a0c40c5c.jpg"
+      "photo": "/fallback-photos/130492e6-5776-4b6f-81c0-fd87a0c40c5c.jpg",
+      "certifications": [
+        "[[AZ-204 Azure Developer Associate]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "73712466-5fbe-4cf0-9b23-a36b44becc02",
@@ -273,7 +382,26 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/eb711a3e-d1a8-4d19-bcff-6ed248574e4d.jpg"
+      "photo": "/fallback-photos/eb711a3e-d1a8-4d19-bcff-6ed248574e4d.jpg",
+      "certifications": [
+        "[[AZ-305 Azure Solutions Architect Expert]]",
+        "[[AZ-104 Azure Administrator Associate]]",
+        "[[AI-102 Azure AI Engineer Associate]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AZ-400 DevOps Engineer Expert]]",
+        "[[AZ-700 Azure Network Engineer Associate]]",
+        "[[SC-200 Security Operations Analyst Associate]]",
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[DP-900 Azure Data Fundamentals]]",
+        "[[DP-600 Fabric Analytics Engineer Associate]]",
+        "[[SC-100 Cybersecurity Architect]]",
+        "[[GitHub Actions Certification]]",
+        "[[GitHub Copilot Certification]]",
+        "[[GitHub Foundations Certification]]",
+        "[[GitHub Advanced Security Certification]]",
+        "[[PSM I Professional Scrum Master]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "bbf3d3b6-246b-44b6-a8d9-b1deae788db7",
@@ -284,7 +412,29 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/28f336a1-61f0-47e5-846c-c42a6c673e61.jpg"
+      "photo": "/fallback-photos/28f336a1-61f0-47e5-846c-c42a6c673e61.jpg",
+      "certifications": [
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AZ-104 Azure Administrator Associate]]",
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[SC-300 Identity and Access Administrator Associate]]",
+        "[[AZ-500 Azure Security Engineer Associate]]",
+        "[[AZ-700 Azure Network Engineer Associate]]",
+        "[[AZ-305 Azure Solutions Architect Expert]]",
+        "[[SC-300 Identity and Access Administrator Associate]]",
+        "[[AZ-400 DevOps Engineer Expert]]",
+        "[[PL-400 Power Platform Developer Associate]]",
+        "[[AI-900 Azure AI Fundamentals]]",
+        "[[SC-100 Cybersecurity Architect]]",
+        "[[PL-600 Power Platform Solution Architect]]",
+        "[[GitHub Foundations Certification]]",
+        "[[GitHub Actions Certification]]",
+        "[[GitHub Advanced Security Certification]]",
+        "[[GitHub Administration Certification]]",
+        "[[GitHub Copilot Certification]]",
+        "[[CKA Certified Kubernetes Administrator]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "e3f2f1ef-e880-4d9f-916b-e1d795700c88",
@@ -295,7 +445,18 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/9e4bbaef-91b2-4429-a42b-b08ca068e351.jpg"
+      "photo": "/fallback-photos/9e4bbaef-91b2-4429-a42b-b08ca068e351.jpg",
+      "certifications": [
+        "[[GitHub Actions Certification]]",
+        "[[GitHub Administration Certification]]",
+        "[[GitHub Advanced Security Certification]]",
+        "[[GitHub Foundations Certification]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AI-900 Azure AI Fundamentals]]",
+        "[[AI-102 Azure AI Engineer Associate]]",
+        "[[DP-900 Azure Data Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "1f0a20a4-fb02-4324-9f10-d8f95bd96239",
@@ -306,7 +467,13 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/c5fc1cb2-bf8b-41c3-82ff-07ae0f0f26f9.jpg"
+      "photo": "/fallback-photos/c5fc1cb2-bf8b-41c3-82ff-07ae0f0f26f9.jpg",
+      "certifications": [
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[AZ-305 Azure Solutions Architect Expert]]",
+        "[[AZ-900 Azure Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "be5b4aa5-a072-4436-9c2e-2bc67b17f9cf",
@@ -317,7 +484,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/43805d8d-483d-4b32-a7ac-499da4f97a66.jpg"
+      "photo": "/fallback-photos/43805d8d-483d-4b32-a7ac-499da4f97a66.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "8e049459-b28c-4a75-881c-f902bcb1d41f",
@@ -328,7 +497,13 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/7d1110e9-525b-42b7-bef4-ccae75373e9f.jpg"
+      "photo": "/fallback-photos/7d1110e9-525b-42b7-bef4-ccae75373e9f.jpg",
+      "certifications": [
+        "[[GitHub Actions Certification]]",
+        "[[GitHub Advanced Security Certification]]",
+        "[[AZ-900 Azure Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "dffb751a-3370-495f-b321-6af1f12fc78d",
@@ -339,7 +514,14 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/d81b7220-d020-4b78-955d-df23bbd39d8c.jpg"
+      "photo": "/fallback-photos/d81b7220-d020-4b78-955d-df23bbd39d8c.jpg",
+      "certifications": [
+        "[[GitHub Foundations Certification]]",
+        "[[AI-102 Azure AI Engineer Associate]]",
+        "[[GitHub Copilot]]",
+        "[[GitHub Copilot Certification]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "e9da4edc-c18e-4fc9-b79d-5f914b1c6676",
@@ -350,7 +532,13 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/77e1fc26-c2cb-4353-a54f-55fe64231ec0.jpg"
+      "photo": "/fallback-photos/77e1fc26-c2cb-4353-a54f-55fe64231ec0.jpg",
+      "certifications": [
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[PSM I Professional Scrum Master]]",
+        "[[PSM II Professional Scrum Master]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "c0bb8188-2cc9-4e80-8aca-057d5cd5103b",
@@ -361,7 +549,12 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/4249ab00-8325-4a37-8c1f-ffbf9a7cb35c.jpg"
+      "photo": "/fallback-photos/4249ab00-8325-4a37-8c1f-ffbf9a7cb35c.jpg",
+      "certifications": [
+        "[[AZ-305 Azure Solutions Architect Expert]]",
+        "[[AZ-500 Azure Security Engineer Associate]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "d8b067c5-4b4e-47a7-b290-68b62e9d8ec9",
@@ -372,7 +565,17 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/02016fb1-c307-4373-8d70-8a0ac1c51cb1.jpg"
+      "photo": "/fallback-photos/02016fb1-c307-4373-8d70-8a0ac1c51cb1.jpg",
+      "certifications": [
+        "[[GitHub Foundations Certification]]",
+        "[[SC-300 Identity and Access Administrator Associate]]",
+        "[[AZ-500 Azure Security Engineer Associate]]",
+        "[[SC-300 Identity and Access Administrator Associate]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[AI-900 Azure AI Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "5fd1e0b1-3b10-4a60-9bd5-712b0933e83a",
@@ -383,7 +586,14 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/4eba084a-1e8f-49f7-a02d-87d36fe4b493.jpg"
+      "photo": "/fallback-photos/4eba084a-1e8f-49f7-a02d-87d36fe4b493.jpg",
+      "certifications": [
+        "[[AZ-104 Azure Administrator Associate]]",
+        "[[SC-200 Security Operations Analyst Associate]]",
+        "[[AZ-500 Azure Security Engineer Associate]]",
+        "[[SC-100 Cybersecurity Architect]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "a055690c-a19c-460f-862a-0a767a5cb761",
@@ -394,7 +604,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/011255eb-05f8-4634-8fcb-64390af174f9.jpg"
+      "photo": "/fallback-photos/011255eb-05f8-4634-8fcb-64390af174f9.jpg",
+      "certifications": [],
+      "country": "NL"
     },
     {
       "id": "ddefe175-d966-4053-b29f-8b43b47e536e",
@@ -405,7 +617,17 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/d18be586-2404-4037-a6b4-ae672ce7ad6a.jpg"
+      "photo": "/fallback-photos/d18be586-2404-4037-a6b4-ae672ce7ad6a.jpg",
+      "certifications": [
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AZ-305 Azure Solutions Architect Expert]]",
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[DP-420 Azure Cosmos DB Developer Specialty]]",
+        "[[PSM I Professional Scrum Master]]",
+        "[[AI-900 Azure AI Fundamentals]]",
+        "[[AI-102 Azure AI Engineer Associate]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "c80ee885-4578-48ee-b159-b6600f6cb7cb",
@@ -416,7 +638,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/b61c318d-f97f-4628-b068-af51d9cccf5a.jpg"
+      "photo": "/fallback-photos/b61c318d-f97f-4628-b068-af51d9cccf5a.jpg",
+      "certifications": [],
+      "country": "NL"
     },
     {
       "id": "f2f3bb29-c2d8-4145-93dc-91c432c6bd20",
@@ -427,7 +651,11 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/0ee1a816-51b4-40f8-8be1-caa6d0da2339.jpg"
+      "photo": "/fallback-photos/0ee1a816-51b4-40f8-8be1-caa6d0da2339.jpg",
+      "certifications": [
+        "[[AZ-900 Azure Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "a464799e-f550-4970-89fb-b05425c2db1f",
@@ -438,7 +666,11 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/74bd599b-4352-4b0c-a38d-c0631eecc378.jpg"
+      "photo": "/fallback-photos/74bd599b-4352-4b0c-a38d-c0631eecc378.jpg",
+      "certifications": [
+        "[[DP-900 Azure Data Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "fa2ad92d-5fd3-4ba1-bb3f-811ebbc44b0f",
@@ -449,7 +681,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/27c14101-8807-4040-a5c7-c0f98d4b760a.jpg"
+      "photo": "/fallback-photos/27c14101-8807-4040-a5c7-c0f98d4b760a.jpg",
+      "certifications": [],
+      "country": "NL"
     },
     {
       "id": "484d1d55-2a3a-4b40-93f9-3b2315736616",
@@ -460,7 +694,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/d056a53f-86fb-4b4a-a273-e4f4bf776605.jpg"
+      "photo": "/fallback-photos/d056a53f-86fb-4b4a-a273-e4f4bf776605.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "f942ada6-0806-4deb-95fd-d64e52e3d528",
@@ -471,7 +707,12 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/c1282068-1587-40a5-9ad3-20029fcbc5f8.jpg"
+      "photo": "/fallback-photos/c1282068-1587-40a5-9ad3-20029fcbc5f8.jpg",
+      "certifications": [
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AI-900 Azure AI Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "97e38c5d-c22e-44b9-9043-c76057453c79",
@@ -482,7 +723,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/efca6a73-dc39-47e8-b919-cca3cbc7a5f0.jpg"
+      "photo": "/fallback-photos/efca6a73-dc39-47e8-b919-cca3cbc7a5f0.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "8de96dd1-17fb-42ec-b1fc-baec18686a0c",
@@ -493,7 +736,14 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/16aab68b-2263-431b-9754-d09cb10327d3.jpg"
+      "photo": "/fallback-photos/16aab68b-2263-431b-9754-d09cb10327d3.jpg",
+      "certifications": [
+        "[[SC-300 Identity and Access Administrator Associate]]",
+        "[[AZ-500 Azure Security Engineer Associate]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[PSPO I Professional Scrum Product Owner]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "376fdb85-5fec-4ba5-b996-cd8ac388ff67",
@@ -504,7 +754,14 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/229070ec-4d64-418d-8eb8-c7844a7a4d96.jpg"
+      "photo": "/fallback-photos/229070ec-4d64-418d-8eb8-c7844a7a4d96.jpg",
+      "certifications": [
+        "[[GitHub Foundations Certification]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[PSPO I Professional Scrum Product Owner]]",
+        "[[GitHub Sales Professional]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "5b02641b-429a-4de1-bb0e-74bf90f90982",
@@ -515,7 +772,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/dbda7247-8830-4d36-9ca4-22b49ac75627.jpg"
+      "photo": "/fallback-photos/dbda7247-8830-4d36-9ca4-22b49ac75627.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "fb977cf3-aa5d-43eb-a3f2-59acfab7fa8d",
@@ -526,7 +785,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/9d7e6e2f-9fc1-4294-ba6e-258837104e0b.jpg"
+      "photo": "/fallback-photos/9d7e6e2f-9fc1-4294-ba6e-258837104e0b.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "8e8c48f4-ec15-456c-aac6-c1b91d000b00",
@@ -537,7 +798,11 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/098fccaf-4fb1-4ab9-9120-b6a0ed034c80.jpg"
+      "photo": "/fallback-photos/098fccaf-4fb1-4ab9-9120-b6a0ed034c80.jpg",
+      "certifications": [
+        "[[AZ-900 Azure Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "3616a3e2-8e92-4e6d-80cf-0b5016058685",
@@ -548,7 +813,13 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/294bebc8-5660-4fd2-9aa9-1882fbb8fa12.jpg"
+      "photo": "/fallback-photos/294bebc8-5660-4fd2-9aa9-1882fbb8fa12.jpg",
+      "certifications": [
+        "[[AZ-104 Azure Administrator Associate]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AZ-305 Azure Solutions Architect Expert]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "7bfaf075-39e2-4ccc-8aa6-fb852b75af82",
@@ -559,7 +830,16 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/281d63dc-28dd-46cd-b4c2-7c57a63e52f8.jpg"
+      "photo": "/fallback-photos/281d63dc-28dd-46cd-b4c2-7c57a63e52f8.jpg",
+      "certifications": [
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AZ-305 Azure Solutions Architect Expert]]",
+        "[[AZ-400 DevOps Engineer Expert]]",
+        "[[AZ-700 Azure Network Engineer Associate]]",
+        "[[AZ-104 Azure Administrator Associate]]",
+        "[[DP-900 Azure Data Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "cbfa17e7-cf58-4866-8515-f6ae3ebbc94b",
@@ -570,7 +850,17 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/bb22863e-f84e-43be-900e-3a453c6dc9f3.jpg"
+      "photo": "/fallback-photos/bb22863e-f84e-43be-900e-3a453c6dc9f3.jpg",
+      "certifications": [
+        "[[GitHub Foundations Certification]]",
+        "[[AZ-305 Azure Solutions Architect Expert]]",
+        "[[DP-420 Azure Cosmos DB Developer Specialty]]",
+        "[[AZ-400 DevOps Engineer Expert]]",
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[AZ-104 Azure Administrator Associate]]",
+        "[[AZ-900 Azure Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "c53bf814-69af-44bd-adb6-46f3640dfcda",
@@ -581,7 +871,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/d341a70a-469a-4123-8c3c-e4b04953f7ff.jpg"
+      "photo": "/fallback-photos/d341a70a-469a-4123-8c3c-e4b04953f7ff.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "2e563efe-af6c-4be7-9025-389ac403d722",
@@ -592,7 +884,12 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/8e40c8b4-4fb9-41bb-8624-88ad7bc1dfe9.jpg"
+      "photo": "/fallback-photos/8e40c8b4-4fb9-41bb-8624-88ad7bc1dfe9.jpg",
+      "certifications": [
+        "[[PL-900 Power Platform Fundamentals]]",
+        "[[AZ-900 Azure Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "f2bbf4cb-a880-4f18-abb0-f813a6cab367",
@@ -603,7 +900,13 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/19eec55b-01ca-491f-8332-d131b3423fbf.jpg"
+      "photo": "/fallback-photos/19eec55b-01ca-491f-8332-d131b3423fbf.jpg",
+      "certifications": [
+        "[[AZ-400 DevOps Engineer Expert]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AZ-204 Azure Developer Associate]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "d4980c0f-183e-423e-be4b-94b2ed9dcbf7",
@@ -614,7 +917,11 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/fc82fbb8-fd4d-4a36-8e12-a81ccc398909.jpg"
+      "photo": "/fallback-photos/fc82fbb8-fd4d-4a36-8e12-a81ccc398909.jpg",
+      "certifications": [
+        "[[AZ-204 Azure Developer Associate]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "ae8103e0-34bb-4682-80bf-7295e6da5346",
@@ -625,7 +932,13 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/61f903c0-31b8-44d5-8709-429b73b1e46c.jpg"
+      "photo": "/fallback-photos/61f903c0-31b8-44d5-8709-429b73b1e46c.jpg",
+      "certifications": [
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[PSM I Professional Scrum Master]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "25ce9053-f14b-4db2-b873-d0b83337d053",
@@ -636,7 +949,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/bf44d722-7e14-4de0-b94b-a1c36ceed01a.jpg"
+      "photo": "/fallback-photos/bf44d722-7e14-4de0-b94b-a1c36ceed01a.jpg",
+      "certifications": [],
+      "country": "NL"
     },
     {
       "id": "a3fa94f6-45ae-48c5-8ab3-eb9985b80a01",
@@ -647,7 +962,19 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/554e087d-b44a-4855-87e7-c81f468739c3.jpg"
+      "photo": "/fallback-photos/554e087d-b44a-4855-87e7-c81f468739c3.jpg",
+      "certifications": [
+        "[[DP-420 Azure Cosmos DB Developer Specialty]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AZ-400 DevOps Engineer Expert]]",
+        "[[AZ-204 Azure Developer Associate]]",
+        "[[AZ-500 Azure Security Engineer Associate]]",
+        "[[PL-900 Power Platform Fundamentals]]",
+        "[[AI-900 Azure AI Fundamentals]]",
+        "[[PSM I Professional Scrum Master]]",
+        "[[AI-102 Azure AI Engineer Associate]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "e5754ec9-e589-46f8-bb50-1b010cbeeb75",
@@ -658,7 +985,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/ed720bd8-d672-4978-a593-5d5b98205918.jpg"
+      "photo": "/fallback-photos/ed720bd8-d672-4978-a593-5d5b98205918.jpg",
+      "certifications": [],
+      "country": "NL"
     },
     {
       "id": "d4bb6286-5e6a-427e-899d-2a600ff741ea",
@@ -669,7 +998,11 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/01b172f3-e355-4631-9927-2ccf5262eb1d.jpg"
+      "photo": "/fallback-photos/01b172f3-e355-4631-9927-2ccf5262eb1d.jpg",
+      "certifications": [
+        "[[AZ-900 Azure Fundamentals]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "a4538997-3cda-4e76-ab98-2098644700b1",
@@ -680,7 +1013,14 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/209b2cb5-93d1-4c4f-ae93-5e67f4183d93.jpg"
+      "photo": "/fallback-photos/209b2cb5-93d1-4c4f-ae93-5e67f4183d93.jpg",
+      "certifications": [
+        "[[AZ-104 Azure Administrator Associate]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AI-900 Azure AI Fundamentals]]",
+        "[[AZ-400 DevOps Engineer Expert]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "66868657-5075-4a3c-acb7-b1010e088186",
@@ -691,7 +1031,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/9fc01b58-3c91-4229-a210-0e146f250865.jpg"
+      "photo": "/fallback-photos/9fc01b58-3c91-4229-a210-0e146f250865.jpg",
+      "certifications": [],
+      "country": "NL"
     },
     {
       "id": "6452598f-5d93-40e9-b42c-a8d3ff6ec61c",
@@ -702,7 +1044,14 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/9e6d1b4a-aff0-4b2d-9666-36c4a94be820.jpg"
+      "photo": "/fallback-photos/9e6d1b4a-aff0-4b2d-9666-36c4a94be820.jpg",
+      "certifications": [
+        "[[AZ-305 Azure Solutions Architect Expert]]",
+        "[[AZ-900 Azure Fundamentals]]",
+        "[[AZ-104 Azure Administrator Associate]]",
+        "[[AZ-400 DevOps Engineer Expert]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "93c9907e-4ddd-454e-be61-61509e161d74",
@@ -713,7 +1062,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/89b25d5b-3b48-4d89-aacd-cd427b4b593c.jpg"
+      "photo": "/fallback-photos/89b25d5b-3b48-4d89-aacd-cd427b4b593c.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "048e8ed6-f1db-4e49-b8cc-88d4804e0c9b",
@@ -724,7 +1075,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/adbdfea3-c552-4dd0-9b00-c7dfb58a8115.jpg"
+      "photo": "/fallback-photos/adbdfea3-c552-4dd0-9b00-c7dfb58a8115.jpg",
+      "certifications": [],
+      "country": ""
     },
     {
       "id": "b6e43839-abfb-47c8-9a5f-40311f828e2f",
@@ -735,7 +1088,14 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/4ade3339-ea84-408d-9740-60df03f61f25.jpg"
+      "photo": "/fallback-photos/4ade3339-ea84-408d-9740-60df03f61f25.jpg",
+      "certifications": [
+        "[[AZ-140 Azure Virtual Desktop Specialty]]",
+        "[[AZ-700 Azure Network Engineer Associate]]",
+        "[[AZ-400 DevOps Engineer Expert]]",
+        "[[AZ-104 Azure Administrator Associate]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "4a4a8a40-4d74-491f-b2b2-800eac91f815",
@@ -746,7 +1106,12 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/d9fe4e7e-f33d-4bf4-af4b-23f18d70561d.jpg"
+      "photo": "/fallback-photos/d9fe4e7e-f33d-4bf4-af4b-23f18d70561d.jpg",
+      "certifications": [
+        "[[AZ-140 Azure Virtual Desktop Specialty]]",
+        "[[AZ-140 Azure Virtual Desktop Specialty]]"
+      ],
+      "country": "NL"
     },
     {
       "id": "69a86351-1884-4581-bde8-9e1152f6514e",
@@ -757,7 +1122,9 @@
         "class": "Person",
         "subclass": "OrganizationUser"
       },
-      "photo": "/fallback-photos/4ff04d02-59f2-497e-a58b-bbd488ac202f.jpg"
+      "photo": "/fallback-photos/4ff04d02-59f2-497e-a58b-bbd488ac202f.jpg",
+      "certifications": [],
+      "country": "NL"
     }
   ]
 }
