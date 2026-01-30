@@ -1,10 +1,14 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import {ref} from "vue";
 
 const router = useRouter()
+const trackTime = ref(false)
 
 function start(mode) {
-  router.push({ path: '/game', query: { mode } })
+  const query = { mode }
+  if (trackTime.value) query.time = '1'
+  router.push({ path: '/game', query })
 }
 
 function goToMatch() {
@@ -57,10 +61,35 @@ function goToMemoryGame() {
         <div class="mode-hint">
           Match pairs of names and photos in this classic memory game.
         </div>      </div>
+
+        <!-- Time tracking option -->
+        <div class="timebox">
+          <label class="timebox-label">
+            <input type="checkbox" v-model="trackTime" />
+            Show how long it took (track time)
+          </label>
+          <div class="mode-hint">If enabled, your total time will be shown on the results screen.</div>
+        </div>
+      </div>
 <!--
       <div class="hint">
         Best experienced on mobile · Portrait mode
       </div>-->
-    </div>
   </main>
 </template>
+
+<style scoped>
+.timebox {
+  margin-top: 12px;
+}
+.timebox-label {
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.timebox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+</style>

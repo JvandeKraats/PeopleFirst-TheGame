@@ -13,7 +13,7 @@ function normalizePhotoUrl(url) {
 export default {
   components: { TheGame },
   data() {
-    return { myList: [] }
+    return { myList: [], trackTime: false }
   },
   computed: {
     mode() {
@@ -43,10 +43,14 @@ export default {
   created() {
     const people = fallbackPeople?.value ?? []
     this.myList = this.pickRandomTen(people).map(this.mapToGameModel)
+
+    // Read time tracking flag from query
+    const timeFlag = this.$route?.query?.time
+    this.trackTime = !!timeFlag
   }
 }
 </script>
 
 <template>
-  <TheGame :collegas="myList" :mode="mode" />
+  <TheGame :collegas="myList" :mode="mode" :trackTime="trackTime" />
 </template>
