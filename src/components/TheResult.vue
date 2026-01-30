@@ -211,6 +211,10 @@ export default {
   margin-bottom: 14px;
 }
 
+.header :deep(a:active svg) {
+  color: var(--pf-logo-active);
+}
+
 .title {
   font-size: 1.25rem;
   font-weight: 700;

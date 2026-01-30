@@ -249,8 +249,6 @@ function msToHuman(ms) {
   <main class="game-shell" v-if="collegas && collegas.length">
     <section class="card">
       <header class="header">
-<!--        <div class="title">People First – The Game</div>
-        <div class="sub">Microsoft Services Innovation Day</div>-->
         <XmsLogoHomeLink />
       </header>
 
@@ -371,6 +369,10 @@ function msToHuman(ms) {
 .header {
   text-align: center;
   margin-bottom: 14px;
+}
+
+.header :deep(a:active svg) {
+  color: var(--pf-logo-active);
 }
 
 .title {

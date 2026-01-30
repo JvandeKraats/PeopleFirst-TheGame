@@ -233,6 +233,10 @@ export default {
   margin-bottom: 10px;
 }
 
+.header :deep(a:active svg) {
+  color: var(--pf-logo-active);
+}
+
 .game-shell {
   display: flex;
   align-items: center;
