@@ -123,13 +123,25 @@ export default {
     onPhotoError(e) {
       if (e?.target) e.target.src = this.fallbackAvatarUrl
     },
+    _sanitizeUrl(v) {
+      const s = (v ?? '').toString().trim()
+      const lower = s.toLowerCase()
+      if (!s || lower === 'undefined' || lower === 'null') return ''
+      return s
+    },
+    _normalizePhotoUrl(url) {
+      const s = this._sanitizeUrl(url)
+      if (!s) return ''
+      if (/^(https?:\/\/|data:|blob:)/i.test(s)) return s
+      const base = import.meta.env.BASE_URL
+      if (s.startsWith('/')) return `${base}${s.slice(1)}`
+      return new URL(s, base).href
+    },
     missedPhotoSrc(w) {
-      // Support both current and older score shapes
-      const raw = (w?.imgUrl || w?.link || w?.photo || '').toString()
-      if (!raw) return this.fallbackAvatarUrl
-      if (/^https?:\/\//i.test(raw)) return raw
-      if (raw.startsWith('/')) return `${import.meta.env.BASE_URL}${raw.slice(1)}`
-      return new URL(raw, import.meta.env.BASE_URL).href
+      // Match how the game uses the URL: use the stored value as-is,
+      // only normalizing root-relative paths for GitHub Pages.
+      const raw = w?.imgUrl ?? w?.link ?? w?.photo ?? ''
+      return this._normalizePhotoUrl(raw) || this.fallbackAvatarUrl
     },
     resetScore() {
       this.$router.push("/");

@@ -73,6 +73,12 @@ export default {
     onPhotoError(e) {
       if (e?.target) e.target.src = this.fallbackAvatarUrl
     },
+    _sanitizeUrl(v) {
+      const s = (v ?? '').toString().trim()
+      const lower = s.toLowerCase()
+      if (!s || lower === 'undefined' || lower === 'null') return ''
+      return s
+    },
     _handleKeyDown(e) {
       const key = e?.key
       if (!this.hasEnoughPeople || !this.currentRound) return
@@ -178,7 +184,7 @@ export default {
         } else {
           wrongAnswers.push({
             name: round.correctName,
-            imgUrl: round.correctLink
+            imgUrl: this._sanitizeUrl(round.correctLink) || this.fallbackAvatarUrl
           })
         }
       }

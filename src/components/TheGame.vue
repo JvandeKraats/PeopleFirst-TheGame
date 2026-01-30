@@ -69,6 +69,12 @@ export default {
     onPhotoError(e) {
       if (e?.target) e.target.src = this.fallbackAvatarUrl
     },
+    _sanitizeUrl(v) {
+      const s = (v ?? '').toString().trim()
+      const lower = s.toLowerCase()
+      if (!s || lower === 'undefined' || lower === 'null') return ''
+      return s
+    },
     _normalizeName(s) {
       return (s || '').toString().trim().toLowerCase()
     },
@@ -210,9 +216,10 @@ export default {
           totalGoodAnswers++;
         } else {
           const guess = (this.collegas[i].answer || '').toString().trim()
+          const imgUrl = this._sanitizeUrl(this.collegas[i].link) || this.fallbackAvatarUrl
           wrongAnswers.push({
             name: this.collegas[i].firstName,
-            imgUrl: this.collegas[i].link,
+            imgUrl,
             guess,
             isClose: !this.isEasyMode && this._isReallyCloseGuess(guess, this.collegas[i].firstName)
           });
