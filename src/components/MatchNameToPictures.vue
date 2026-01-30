@@ -60,7 +60,39 @@ export default {
       deep: false
     }
   },
+  mounted() {
+    window.addEventListener('keydown', this._handleKeyDown)
+  },
+  beforeUnmount() {
+    window.removeEventListener('keydown', this._handleKeyDown)
+  },
   methods: {
+    _handleKeyDown(e) {
+      const key = e?.key
+      if (!this.hasEnoughPeople || !this.currentRound) return
+
+      // Numeric shortcuts: 1-4 select corresponding tile
+      if (['1', '2', '3', '4'].includes(key)) {
+        const idx = parseInt(key, 10) - 1
+        const option = this.currentRound?.options?.[idx]
+        if (!option) return
+
+        e.preventDefault()
+        this.select(option)
+        return
+      }
+
+      // Enter: advance once a selection exists
+      if (key !== 'Enter') return
+      e.preventDefault()
+      if (!this.canGoNext) return
+
+      if (this.currentIndex < this.rounds.length - 1) {
+        this.next()
+      } else {
+        this.submit()
+      }
+    },
     shuffle(items) {
       const arr = items.slice()
       for (let i = arr.length - 1; i > 0; i--) {
@@ -171,19 +203,24 @@ export default {
         {{ currentRound.promptName }}
       </div>
 
+      <div class="explanation">
+        You’ll see one name and four photos. Tap/click the matching photo — or use your keyboard (1–4) — then press Enter (or hit Next) to continue.
+      </div>
+
       <div class="progress" aria-hidden="true">
         <div class="bar" :style="{ width: progressPercent + '%' }"></div>
       </div>
 
       <div class="grid" role="group" aria-label="Picture choices">
         <button
-          v-for="opt in currentRound.options"
+          v-for="(opt, idx) in currentRound.options"
           :key="opt.id"
           type="button"
           class="tile"
           :class="{ selected: isSelected(opt) }"
           @click="select(opt)"
         >
+          <span class="tile-badge" aria-hidden="true">{{ idx + 1 }}</span>
           <img
             class="img"
             :src="opt.link"
@@ -218,7 +255,7 @@ export default {
         </button>
       </div>
 
-      <div class="hint">Pick the photo that matches the name</div>
+      <div class="hint">Tip: Use keys 1–4 to pick a photo</div>
     </section>
   </main>
 
@@ -236,19 +273,19 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 18px;
-  background: #ffffff;
+  background: var(--pf-bg);
   font-family: Calibri, "Segoe UI", Arial, sans-serif;
-  color: #111;
+  color: var(--pf-text);
 }
 
 .card {
   width: 100%;
   max-width: 520px;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.08);
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border-soft);
   border-radius: 16px;
   padding: 18px;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+  box-shadow: 0 10px 28px var(--pf-shadow);
 }
 
 .header {
@@ -269,7 +306,7 @@ export default {
 }
 
 .counter {
-  color: rgba(0,0,0,0.55);
+  color: var(--pf-muted);
   font-size: 0.95rem;
 }
 
@@ -280,9 +317,18 @@ export default {
   text-align: center;
 }
 
+.explanation {
+  margin-top: 10px;
+  text-align: center;
+  color: var(--pf-muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
 .progress {
   height: 10px;
-  background: rgba(0,0,0,0.08);
+  background: var(--pf-border-soft);
   border-radius: 999px;
   overflow: hidden;
   margin: 12px 0 14px;
@@ -291,7 +337,7 @@ export default {
 .bar {
   height: 100%;
   width: 0%;
-  background: #2ea44f;
+  background: var(--pf-accent);
   border-radius: 999px;
   transition: width 200ms ease;
 }
@@ -306,10 +352,28 @@ export default {
 .tile {
   padding: 0;
   border-radius: 14px;
-  border: 2px solid rgba(0,0,0,0.10);
-  background: #fff;
+  border: 2px solid var(--pf-border);
+  background: var(--pf-surface);
   cursor: pointer;
   overflow: hidden;
+  position: relative;
+}
+
+.tile-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 0.9rem;
+  background: var(--pf-surface);
+  color: var(--pf-text);
+  border: 1px solid var(--pf-border);
+  box-shadow: 0 6px 18px var(--pf-shadow);
 }
 
 .tile:hover {
@@ -326,7 +390,7 @@ export default {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
-  background: #f6f6f6;
+  background: var(--pf-surface-2);
 }
 
 .actions {
@@ -350,7 +414,7 @@ export default {
 }
 
 .btn-primary {
-  background: #2ea44f;
+  background: var(--pf-accent);
   color: #fff;
 }
 
@@ -359,19 +423,19 @@ export default {
 }
 
 .btn-secondary {
-  background: #fff;
-  color: #111;
-  border-color: rgba(0,0,0,0.18);
+  background: var(--pf-surface);
+  color: var(--pf-text);
+  border-color: var(--pf-border-strong);
 }
 
 .btn-secondary:hover {
-  background: rgba(0,0,0,0.03);
+  background: var(--pf-hover);
 }
 
 .hint {
   margin-top: 14px;
   text-align: center;
-  color: rgba(0,0,0,0.55);
+  color: var(--pf-muted);
   font-size: 0.92rem;
   font-weight: 600;
 }
@@ -379,7 +443,7 @@ export default {
 .loading {
   text-align: center;
   padding: 26px 6px;
-  color: rgba(0,0,0,0.6);
+  color: var(--pf-muted);
   font-weight: 700;
 }
 </style>

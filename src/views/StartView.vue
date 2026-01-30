@@ -11,8 +11,8 @@ function goToMatch() {
   router.push('/match')
 }
 
-function goToFindJesse() {
-  router.push('/find-jesse')
+function goToMemoryGame() {
+  router.push('/memory')
 }
 </script>
 
@@ -51,11 +51,11 @@ function goToFindJesse() {
         <div class="mode-hint">
           You’ll see one name and four photos — tap the correct photo.
         </div>
-        <button class="start-button start-button--secondary" @click="goToFindJesse">
-          Find Jesse
+        <button class="start-button start-button--xebia" @click="goToMemoryGame">
+          Memory game
         </button>
         <div class="mode-hint">
-          CAPTCHA-style: select all Jesses by photo only.
+          Match pairs of names and photos in this classic memory game.
         </div>      </div>
 <!--
       <div class="hint">
