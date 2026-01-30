@@ -7,6 +7,13 @@ export default {
   data() {
     return { myList: [] }
   },
+  computed: {
+    mode() {
+      const raw = this.$route?.query?.mode
+      const mode = (Array.isArray(raw) ? raw[0] : raw || 'hard').toString().toLowerCase()
+      return mode === 'easy' ? 'easy' : 'hard'
+    }
+  },
   methods: {
     pickRandomTen(people) {
       const maxItems = Math.min(people.length, 10)
@@ -33,5 +40,5 @@ export default {
 </script>
 
 <template>
-  <TheGame :collegas="myList" />
+  <TheGame :collegas="myList" :mode="mode" />
 </template>

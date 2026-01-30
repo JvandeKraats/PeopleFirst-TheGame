@@ -3,8 +3,8 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-function start() {
-  router.push('/game')
+function start(mode) {
+  router.push({ path: '/game', query: { mode } })
 }
 </script>
 
@@ -22,9 +22,21 @@ function start() {
         Ten quick rounds. Have fun.
       </p>
 
-      <button class="start-button" @click="start">
-        Start game
-      </button>
+      <div class="mode-buttons">
+        <button class="start-button" @click="start('easy')">
+          Easy mode
+        </button>
+        <div class="mode-hint">
+          Multiple choice — pick the correct first name.
+        </div>
+
+        <button class="start-button start-button--secondary" @click="start('hard')">
+          Hard mode
+        </button>
+        <div class="mode-hint">
+          Type the first name yourself and get an exact match.
+        </div>
+      </div>
 <!--
       <div class="hint">
         Best experienced on mobile · Portrait mode
