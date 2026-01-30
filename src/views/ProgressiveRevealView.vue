@@ -34,6 +34,7 @@ export default {
     
     return { 
       selectedPerson: null,
+      trackTime: false,
       isPreprocessing: true,
       preprocessingError: null,
       loadingMessage: randomMessage
@@ -80,6 +81,9 @@ export default {
     }
   },
   async created() {
+    const timeFlag = this.$route?.query?.time
+    this.trackTime = !!timeFlag
+
     const people = fallbackPeople?.value ?? []
     const randomPerson = this.pickRandomOne(people)
     this.selectedPerson = this.mapToGameModel(randomPerson)
@@ -110,6 +114,7 @@ export default {
   <ProgressiveRevealGame 
     v-else-if="selectedPerson"
     :person="selectedPerson"
+    :trackTime="trackTime"
     @submit="handleSubmit"
   />
 </template>

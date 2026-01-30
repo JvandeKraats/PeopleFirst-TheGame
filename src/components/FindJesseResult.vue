@@ -23,6 +23,11 @@
           {{ score.totalGoodAnswers }} / {{ totalTiles }} correct
         </div>
 
+        <div v-if="score.elapsed" class="time-taken">
+          <div class="time-label">Time</div>
+          <div class="time-value">{{ score.elapsed }}</div>
+        </div>
+
         <div class="verdict" :class="score.scoreOutOf10 >= 5 ? 'verdict-good' : 'verdict-bad'">
           <span v-if="score.scoreOutOf10 >= 8">Proper legend. 👏</span>
           <span v-else-if="score.scoreOutOf10 >= 5">Solid effort — keep it going.</span>
@@ -92,7 +97,8 @@ export default {
         totalGoodAnswers: 0,
         totalTiles: 9,
         missedJesses: [],
-        falsePositives: []
+        falsePositives: [],
+        elapsed: null
       }
     };
   },
@@ -216,6 +222,23 @@ export default {
   margin-top: 4px;
   font-size: 0.95rem;
   color: var(--pf-muted);
+}
+
+/* Time display */
+.time-taken {
+  margin-top: 8px;
+  text-align: center;
+}
+.time-label {
+  color: var(--pf-muted-2);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.time-value {
+  color: var(--pf-muted-2);
+  font-weight: 800;
+  margin-top: 4px;
+  font-size: 1.25rem;
 }
 
 /* Score block */
