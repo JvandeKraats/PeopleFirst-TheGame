@@ -104,4 +104,8 @@ function goToFindJesse() {
   width: 18px;
   height: 18px;
 }
+
+a:active svg {
+  color: #ff8c00;
+}
 </style>
