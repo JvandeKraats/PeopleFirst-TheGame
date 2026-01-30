@@ -192,10 +192,6 @@ export default {
   margin-bottom: 14px;
 }
 
-.header a:active svg {
-  color: #ff8c00;
-}
-
 .header a {
   display: inline-block;
 }

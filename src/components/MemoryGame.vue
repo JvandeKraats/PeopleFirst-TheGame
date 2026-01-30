@@ -233,10 +233,6 @@ export default {
   margin-bottom: 10px;
 }
 
-.header a:active svg {
-  color: #ff8c00;
-}
-
 .game-shell {
   display: flex;
   align-items: center;

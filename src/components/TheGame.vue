@@ -373,10 +373,6 @@ function msToHuman(ms) {
   margin-bottom: 14px;
 }
 
-.header a:active svg {
-  color: #ff8c00;
-}
-
 .title {
   font-size: 1.25rem;
   font-weight: 700;

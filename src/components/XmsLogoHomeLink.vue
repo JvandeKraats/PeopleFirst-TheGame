@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <div class="flex items-center xl:pr-[1.813rem]" style="opacity: 1">
-    <router-link :to="to" aria-label="Home">
+    <router-link :to="to" aria-label="Home" class="xms-logo-link">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 85 29" class="w-[5.375rem]">
         <path
           fill="currentColor"
@@ -25,3 +25,14 @@ defineProps({
     </router-link>
   </div>
 </template>
+
+<style scoped>
+.xms-logo-link,
+.xms-logo-link:visited {
+  color: var(--pf-xebia-purple);
+}
+
+.xms-logo-link:active {
+  color: var(--pf-xebia-orange);
+}
+</style>
