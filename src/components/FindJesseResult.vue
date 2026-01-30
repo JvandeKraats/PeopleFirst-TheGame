@@ -268,7 +268,7 @@ export default {
 
 .verdict-bad {
   background: rgba(198, 40, 40, 0.10);
-  color: var(--pf-text);
+  color: var(--pf-muted-2);
 }
 
 /* Wrong answers sections */
