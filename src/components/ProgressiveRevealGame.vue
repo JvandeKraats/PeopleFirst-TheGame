@@ -10,7 +10,14 @@ export default {
     return {
       answer: '',
       attempts: 0,
-      brightnessSteps: [0, 0.1, 0.25, 0.45, 0.7, 1.0],
+      clipPathSteps: [
+        'circle(0% at 50% 50%)',  // Step 0: Nothing visible (pure silhouette)
+        'circle(15% at 30% 30%)',  // Step 1: Small circle in top-left
+        'polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%)',  // Step 2: Top 30%
+        'polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%)',  // Step 3: Top half
+        'polygon(0% 0%, 100% 0%, 100% 75%, 0% 75%)',  // Step 4: Top 75%
+        'circle(100% at 50% 50%)'  // Step 5: Full image
+      ],
       currentStepIndex: 0,
       isCorrect: false,
       showingResult: false,
@@ -22,7 +29,7 @@ export default {
       return new URL('fallback-photos/fallback-avatar.png', import.meta.env.BASE_URL).href
     },
     currentBrightness() {
-      return this.brightnessSteps[this.currentStepIndex]
+      return this.clipPathSteps[this.currentStepIndex]
     },
     displayImageUrl() {
       // Always show the original photo
@@ -43,14 +50,16 @@ export default {
       }
     },
     overlayStyle() {
-      // Control how much of the original photo shows through
-      // Start at 0 (fully transparent = pure silhouette shows)
-      // End at 1 (fully opaque = original photo fully visible)
+      // Control which portion of the original photo is visible
       if (this.showingResult) {
-        return { opacity: 1 }
+        return { 
+          clipPath: 'circle(100% at 50% 50%)',
+          opacity: 1
+        }
       }
       return {
-        opacity: this.currentBrightness
+        clipPath: this.currentBrightness,
+        opacity: 1
       }
     },
     attemptsText() {
@@ -59,7 +68,7 @@ export default {
       return `${this.attempts} attempts`
     },
     canRevealMore() {
-      return this.currentStepIndex < this.brightnessSteps.length - 1
+      return this.currentStepIndex < this.clipPathSteps.length - 1
     }
   },
   mounted() {
@@ -176,7 +185,7 @@ export default {
             :disabled="showingResult"
         />
         <div class="hint">
-          Wrong guesses reveal more of the photo ({{ brightnessSteps.length }} steps total)
+          Wrong guesses reveal more of the photo ({{ clipPathSteps.length }} steps total)
         </div>
       </div>
 
@@ -277,7 +286,7 @@ export default {
   left: 0px;
   top: 50%;
   transform: translateY(-50%);
-  transition: opacity 600ms ease;
+  transition: clip-path 600ms ease;
 }
 
 .photo.revealed {
