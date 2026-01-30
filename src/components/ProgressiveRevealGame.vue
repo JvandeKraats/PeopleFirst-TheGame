@@ -9,12 +9,17 @@ export default {
     person: {
       type: Object,
       required: true
+    },
+    trackTime: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       answer: '',
       attempts: 0,
+      _startTime: null,
       revealSteps: [
         { clipPath: 'circle(0% at 50% 50%)', opacity: 0 },  // Step 0: Nothing visible
         { clipPath: 'circle(20% at 50% 75%)', opacity: 0.3 },  // Step 1: Small circle at bottom, faint
@@ -80,6 +85,9 @@ export default {
   mounted() {
     // Start with silhouette
     this.currentImageUrl = this.person.silhouetteUrl || this.person.link
+    if (this.trackTime) {
+      this._startTime = Date.now()
+    }
   },
   methods: {
     onPhotoError(e) {
@@ -124,10 +132,24 @@ export default {
           imgUrl: this.person.link || this.fallbackAvatarUrl
         }
       }
+
+      if (this.trackTime && this._startTime) {
+        const elapsedMs = Date.now() - this._startTime
+        score.elapsedMs = elapsedMs
+        score.elapsed = msToHuman(elapsedMs)
+      }
+
       this.$emit('submit', score)
     }
   }
 };
+
+function msToHuman(ms) {
+  const totalSeconds = Math.round(ms / 1000)
+  const minutes = Math.floor(totalSeconds / 60)
+  const seconds = totalSeconds % 60
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+}
 </script>
 
 <template>

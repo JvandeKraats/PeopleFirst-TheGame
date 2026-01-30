@@ -12,6 +12,10 @@ export default {
       type: Array,
       required: true
     },
+    trackTime: {
+      type: Boolean,
+      default: false
+    },
     gridSize: {
       type: Number,
       default: 3
@@ -27,12 +31,18 @@ export default {
   },
   data() {
     return {
-      selectedIds: new Set()
+      selectedIds: new Set(),
+      _startTime: null
     };
   },
   computed: {
     fallbackAvatarUrl() {
       return getFallbackAvatarUrl()
+    }
+  },
+  mounted() {
+    if (this.trackTime) {
+      this._startTime = Date.now()
     }
   },
   methods: {
@@ -100,7 +110,7 @@ export default {
         }
       });
 
-      this.$emit('submit', {
+      const payload = {
         scoreOutOf10,
         totalGoodAnswers: totalCorrect,
         totalTiles,
@@ -108,10 +118,25 @@ export default {
         falsePositives,
         // Keep wrongAnswers for backward compatibility with regular game modes
         wrongAnswers: [...falsePositives, ...missedJesses]
-      });
+      }
+
+      if (this.trackTime && this._startTime) {
+        const elapsedMs = Date.now() - this._startTime
+        payload.elapsedMs = elapsedMs
+        payload.elapsed = msToHuman(elapsedMs)
+      }
+
+      this.$emit('submit', payload);
     }
   }
 };
+
+function msToHuman(ms) {
+  const totalSeconds = Math.round(ms / 1000)
+  const minutes = Math.floor(totalSeconds / 60)
+  const seconds = totalSeconds % 60
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+}
 </script>
 
 <template>

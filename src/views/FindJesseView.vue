@@ -10,6 +10,7 @@ export default {
       jesseCount: 0,
       collegas: [],
       refreshesRemaining: 1,
+      trackTime: false,
       jesseIds: [
         '71a6bb31-944f-41d9-a940-d8a0c6d41d02', // Jesse Houwing
         'c80ee885-4578-48ee-b159-b6600f6cb7cb', // Jesse Wellenberg
@@ -18,6 +19,8 @@ export default {
     };
   },
   created() {
+    const timeFlag = this.$route?.query?.time
+    this.trackTime = !!timeFlag
     this.generateGrid();
   },
   methods: {
@@ -77,6 +80,7 @@ export default {
     :grid-size="gridSize"
     :jesse-count="jesseCount"
     :refreshes-remaining="refreshesRemaining"
+    :trackTime="trackTime"
     @refresh="handleRefresh"
     @submit="handleSubmit"
   />

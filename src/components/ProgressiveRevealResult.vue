@@ -95,6 +95,11 @@ export default {
           <div class="score-label">{{ attempts === 1 ? 'attempt' : 'attempts' }}</div>
         </div>
         <div class="score-message">{{ resultMessage }}</div>
+
+        <div v-if="score.elapsed" class="time-taken">
+          <div class="time-label">Time</div>
+          <div class="time-value">{{ score.elapsed }}</div>
+        </div>
       </div>
 
       <div class="person-section">
@@ -209,6 +214,23 @@ export default {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--pf-text);
+}
+
+/* Time display */
+.time-taken {
+  margin-top: 10px;
+  text-align: center;
+}
+.time-label {
+  color: var(--pf-muted-2);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.time-value {
+  color: var(--pf-muted-2);
+  font-weight: 800;
+  margin-top: 4px;
+  font-size: 1.25rem;
 }
 
 .person-section {
