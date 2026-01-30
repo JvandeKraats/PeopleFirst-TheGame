@@ -81,6 +81,8 @@
 </template>
 
 <script>
+import { applyFallbackOnError, getFallbackAvatarUrl, sanitizeUrl } from '../utils/photo'
+
 export default {
   data() {
     return {
@@ -93,7 +95,7 @@ export default {
   },
   computed: {
     fallbackAvatarUrl() {
-      return new URL('fallback-photos/fallback-avatar.png', import.meta.env.BASE_URL).href
+      return getFallbackAvatarUrl()
     },
     isHardMode() {
       const mode = (this.score?.mode || '').toString().toLowerCase()
@@ -121,29 +123,12 @@ export default {
   },
   methods: {
     onPhotoError(e) {
-      if (e?.target) e.target.src = this.fallbackAvatarUrl
-    },
-    _sanitizeUrl(v) {
-      const s = (v ?? '').toString().trim()
-      const lower = s.toLowerCase()
-      const lowerNoLeadingSlash = lower.replace(/^\/+/, '')
-      if (!s || lower === 'undefined' || lower === 'null') return ''
-      if (lowerNoLeadingSlash === 'undefined' || lowerNoLeadingSlash === 'null') return ''
-      return s
-    },
-    _normalizePhotoUrl(url) {
-      const s = this._sanitizeUrl(url)
-      if (!s) return ''
-      if (/^(https?:\/\/|data:|blob:)/i.test(s)) return s
-      const base = import.meta.env.BASE_URL
-      if (s.startsWith('/')) return `${base}${s.slice(1)}`
-      return new URL(s, base).href
+      applyFallbackOnError(e, this.fallbackAvatarUrl)
     },
     missedPhotoSrc(w) {
-      // Match how the game uses the URL: use the stored value as-is,
-      // only normalizing root-relative paths for GitHub Pages.
       const raw = w?.imgUrl ?? w?.link ?? w?.photo ?? ''
-      return this._normalizePhotoUrl(raw) || this.fallbackAvatarUrl
+      // Match TheGame behavior: sanitize obvious bad strings, otherwise use as-is.
+      return sanitizeUrl(raw) || this.fallbackAvatarUrl
     },
     resetScore() {
       this.$router.push("/");

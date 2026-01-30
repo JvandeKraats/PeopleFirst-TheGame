@@ -1,4 +1,6 @@
 <script>
+import { applyFallbackOnError, getFallbackAvatarUrl, sanitizeUrl } from '../utils/photo'
+
 export default {
   props: {
     collegas: Array,
@@ -20,7 +22,7 @@ export default {
   },
   computed: {
     fallbackAvatarUrl() {
-      return new URL('fallback-photos/fallback-avatar.png', import.meta.env.BASE_URL).href
+      return getFallbackAvatarUrl()
     },
     isEasyMode() {
       return (this.mode || '').toString().toLowerCase() === 'easy'
@@ -67,15 +69,7 @@ export default {
   },
   methods: {
     onPhotoError(e) {
-      if (e?.target) e.target.src = this.fallbackAvatarUrl
-    },
-    _sanitizeUrl(v) {
-      const s = (v ?? '').toString().trim()
-      const lower = s.toLowerCase()
-      const lowerNoLeadingSlash = lower.replace(/^\/+/, '')
-      if (!s || lower === 'undefined' || lower === 'null') return ''
-      if (lowerNoLeadingSlash === 'undefined' || lowerNoLeadingSlash === 'null') return ''
-      return s
+      applyFallbackOnError(e, this.fallbackAvatarUrl)
     },
     _normalizeName(s) {
       return (s || '').toString().trim().toLowerCase()
@@ -218,7 +212,7 @@ export default {
           totalGoodAnswers++;
         } else {
           const guess = (this.collegas[i].answer || '').toString().trim()
-          const imgUrl = this._sanitizeUrl(this.collegas[i].link) || this.fallbackAvatarUrl
+          const imgUrl = sanitizeUrl(this.collegas[i].link) || this.fallbackAvatarUrl
           wrongAnswers.push({
             name: this.collegas[i].firstName,
             imgUrl,
