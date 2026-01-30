@@ -40,7 +40,7 @@
                 :src="missedPhotoSrc(w)"
                 :alt="w.name ? `Photo of ${w.name}` : 'Missed Jesse photo'"
                 loading="lazy"
-                @error="(e) => (e.target.src = '/fallback-photos/fallback-avatar.png')"
+                @error="(e) => (e.target.src = fallbackAvatarUrl)"
             />
             <div class="wrong-name">{{ w.name }}</div>
           </li>
@@ -57,7 +57,7 @@
                 :src="missedPhotoSrc(w)"
                 :alt="w.name ? `Photo of ${w.name}` : 'Not Jesse photo'"
                 loading="lazy"
-                @error="(e) => (e.target.src = '/fallback-photos/fallback-avatar.png')"
+                @error="(e) => (e.target.src = fallbackAvatarUrl)"
             />
             <div class="wrong-name">{{ w.name }}</div>
           </li>
@@ -80,6 +80,7 @@
 <script>
 import confetti from 'canvas-confetti'
 import XmsLogoHomeLink from './XmsLogoHomeLink.vue'
+import { getFallbackAvatarUrl } from '../utils/photo'
 
 export default {
   components: {
@@ -99,6 +100,9 @@ export default {
   computed: {
     totalTiles() {
       return this.score.totalTiles || 9;
+    },
+    fallbackAvatarUrl() {
+      return getFallbackAvatarUrl()
     }
   },
   mounted() {
@@ -117,7 +121,7 @@ export default {
           w?.imgUrl ||
           w?.link ||
           w?.photo ||
-          "/fallback-photos/fallback-avatar.png"
+          this.fallbackAvatarUrl
       );
     },
     resetScore() {
