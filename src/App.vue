@@ -1,45 +1,15 @@
 <script setup>
 import { RouterView } from 'vue-router'
-
 </script>
 
 <template>
-  <RouterView />
+  <div class="min-vh-100 d-flex flex-column">
+
+    <main class="flex-grow-1 d-flex align-items-center py-4">
+      <div class="container">
+        <RouterView />
+      </div>
+    </main>
+
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-</style>
