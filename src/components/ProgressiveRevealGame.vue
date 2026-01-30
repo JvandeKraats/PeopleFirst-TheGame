@@ -10,13 +10,13 @@ export default {
     return {
       answer: '',
       attempts: 0,
-      clipPathSteps: [
-        'circle(0% at 50% 50%)',  // Step 0: Nothing visible (pure silhouette)
-        'circle(15% at 30% 30%)',  // Step 1: Small circle in top-left
-        'polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%)',  // Step 2: Top 30%
-        'polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%)',  // Step 3: Top half
-        'polygon(0% 0%, 100% 0%, 100% 75%, 0% 75%)',  // Step 4: Top 75%
-        'circle(100% at 50% 50%)'  // Step 5: Full image
+      revealSteps: [
+        { clipPath: 'circle(0% at 50% 50%)', opacity: 0 },  // Step 0: Nothing visible
+        { clipPath: 'circle(20% at 50% 75%)', opacity: 0.3 },  // Step 1: Small circle at bottom, faint
+        { clipPath: 'polygon(0% 65%, 100% 65%, 100% 100%, 0% 100%)', opacity: 0.5 },  // Step 2: Bottom 35%, semi-transparent
+        { clipPath: 'polygon(0% 40%, 100% 40%, 100% 100%, 0% 100%)', opacity: 0.7 },  // Step 3: Bottom 60%, more visible
+        { clipPath: 'polygon(0% 15%, 100% 15%, 100% 100%, 0% 100%)', opacity: 0.85 },  // Step 4: Bottom 85%, almost clear
+        { clipPath: 'circle(100% at 50% 50%)', opacity: 1 }  // Step 5: Full image, fully visible
       ],
       currentStepIndex: 0,
       isCorrect: false,
@@ -29,7 +29,7 @@ export default {
       return new URL('fallback-photos/fallback-avatar.png', import.meta.env.BASE_URL).href
     },
     currentBrightness() {
-      return this.clipPathSteps[this.currentStepIndex]
+      return this.revealSteps[this.currentStepIndex]
     },
     displayImageUrl() {
       // Always show the original photo
@@ -50,16 +50,17 @@ export default {
       }
     },
     overlayStyle() {
-      // Control which portion of the original photo is visible
+      // Control which portion and how transparent the original photo is
       if (this.showingResult) {
         return { 
           clipPath: 'circle(100% at 50% 50%)',
           opacity: 1
         }
       }
+      const step = this.currentBrightness
       return {
-        clipPath: this.currentBrightness,
-        opacity: 1
+        clipPath: step.clipPath,
+        opacity: step.opacity
       }
     },
     attemptsText() {
@@ -68,7 +69,7 @@ export default {
       return `${this.attempts} attempts`
     },
     canRevealMore() {
-      return this.currentStepIndex < this.clipPathSteps.length - 1
+      return this.currentStepIndex < this.revealSteps.length - 1
     }
   },
   mounted() {
@@ -185,7 +186,7 @@ export default {
             :disabled="showingResult"
         />
         <div class="hint">
-          Wrong guesses reveal more of the photo ({{ clipPathSteps.length }} steps total)
+          Wrong guesses reveal more of the photo ({{ revealSteps.length }} steps total)
         </div>
       </div>
 
