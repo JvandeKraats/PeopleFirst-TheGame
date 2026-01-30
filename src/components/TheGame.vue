@@ -54,6 +54,20 @@ export default {
   },
   methods: {
     _handleKeyDown(e) {
+      // In easy mode: allow numeric keys 1-4 to select the corresponding choice
+      if (this.isEasyMode) {
+        const key = e.key
+        if (['1', '2', '3', '4'].includes(key)) {
+          e.preventDefault()
+          const idx = parseInt(key, 10) - 1
+          const choice = this.currentChoices?.[idx]
+          if (choice) {
+            this.selectChoice(choice)
+          }
+          return
+        }
+      }
+
       if (e.key !== 'Enter') return
       // Prevent form submits / accidental behavior
       e.preventDefault()
@@ -179,17 +193,20 @@ export default {
         <template v-if="isEasyMode">
           <div class="choices" role="group" aria-label="Multiple choice answers">
             <button
-              v-for="choice in currentChoices"
+              v-for="(choice, idx) in currentChoices"
               :key="choice"
               type="button"
               class="choice"
               :class="{ 'choice-selected': isChoiceSelected(choice) }"
               @click="selectChoice(choice)"
+              :aria-label="`Choice ${idx + 1}: ${choice}`"
             >
+              <span class="choice-index">{{ idx + 1 }}.</span>
               {{ choice }}
             </button>
           </div>
           <div class="hint">Multiple choice: pick the correct first name</div>
+          <div class="shortcut">Press <kbd>1</kbd>–<kbd>4</kbd> to choose, then <kbd>Enter</kbd> to continue</div>
         </template>
 
         <template v-else>
@@ -366,6 +383,35 @@ export default {
   text-align: left;
   color: rgba(0,0,0,0.55);
   font-size: 0.9rem;
+}
+
+.shortcut {
+  width: min(360px, 100%);
+  text-align: left;
+  color: rgba(0,0,0,0.55);
+  font-size: 0.9rem;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.shortcut kbd {
+  background: #f6f6f6;
+  border: 1px solid rgba(0,0,0,0.12);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-family: inherit;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.04);
+}
+
+.choice-index {
+  display: inline-block;
+  width: 28px;
+  margin-right: 6px;
+  color: rgba(0,0,0,0.55);
+  font-weight: 700;
 }
 
 /* Multiple choice */
