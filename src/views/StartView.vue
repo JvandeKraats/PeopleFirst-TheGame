@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -13,6 +12,10 @@ function start(mode) {
 
 function goToMatch() {
   router.push('/match')
+}
+
+function goToMemoryGame() {
+  router.push('/memory')
 }
 </script>
 
@@ -51,6 +54,12 @@ function goToMatch() {
         <div class="mode-hint">
           You’ll see one name and four photos — tap the correct photo.
         </div>
+        <button class="start-button start-button--xebia" @click="goToMemoryGame">
+          Memory game
+        </button>
+        <div class="mode-hint">
+          Match pairs of names and photos in this classic memory game.
+        </div>      </div>
 
         <!-- Time tracking option -->
         <div class="timebox">
@@ -65,7 +74,6 @@ function goToMatch() {
       <div class="hint">
         Best experienced on mobile · Portrait mode
       </div>-->
-    </div>
   </main>
 </template>
 
