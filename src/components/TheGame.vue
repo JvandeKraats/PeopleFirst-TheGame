@@ -53,6 +53,48 @@ export default {
     window.removeEventListener('keydown', this._handleKeyDown)
   },
   methods: {
+    _normalizeName(s) {
+      return (s || '').toString().trim().toLowerCase()
+    },
+    _levenshtein(a, b) {
+      // Iterative DP; good enough for short first names.
+      const s = this._normalizeName(a)
+      const t = this._normalizeName(b)
+      if (!s.length) return t.length
+      if (!t.length) return s.length
+
+      const prev = new Array(t.length + 1)
+      const curr = new Array(t.length + 1)
+      for (let j = 0; j <= t.length; j++) prev[j] = j
+
+      for (let i = 1; i <= s.length; i++) {
+        curr[0] = i
+        const sChar = s[i - 1]
+        for (let j = 1; j <= t.length; j++) {
+          const cost = sChar === t[j - 1] ? 0 : 1
+          curr[j] = Math.min(
+            prev[j] + 1, // delete
+            curr[j - 1] + 1, // insert
+            prev[j - 1] + cost // substitute
+          )
+        }
+        for (let j = 0; j <= t.length; j++) prev[j] = curr[j]
+      }
+
+      return prev[t.length]
+    },
+    _isReallyCloseGuess(guess, correctFirstName) {
+      const g = this._normalizeName(guess)
+      const c = this._normalizeName(correctFirstName)
+      if (!g || !c) return false
+      if (g === c) return false
+
+      // Heuristic thresholds that work well for short first names.
+      // Examples: jon↔john (1), sarah↔sara (1), steven↔stephen (2)
+      const maxDistance = c.length <= 4 ? 1 : 2
+      const distance = this._levenshtein(g, c)
+      return distance > 0 && distance <= maxDistance
+    },
     _handleKeyDown(e) {
       // In easy mode: allow numeric keys 1-4 to select the corresponding choice
       if (this.isEasyMode) {
@@ -145,14 +187,18 @@ export default {
         ) {
           totalGoodAnswers++;
         } else {
+          const guess = (this.collegas[i].answer || '').toString().trim()
           wrongAnswers.push({
             name: this.collegas[i].firstName,
             imgUrl: this.collegas[i].link,
+            guess,
+            isClose: !this.isEasyMode && this._isReallyCloseGuess(guess, this.collegas[i].firstName)
           });
         }
       }
 
       return {
+        mode: this.isEasyMode ? 'easy' : 'hard',
         scoreOutOf10: ((totalGoodAnswers / this.collegas.length) * 10).toFixed(1),
         totalGoodAnswers,
         wrongAnswers,
@@ -268,20 +314,20 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 18px;
-  background: #ffffff;
+  background: var(--pf-bg);
   font-family: Calibri, "Segoe UI", Arial, sans-serif;
-  color: #111;
+  color: var(--pf-text);
 }
 
 /* Card */
 .card {
   width: 100%;
   max-width: 520px;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.08);
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border-soft);
   border-radius: 16px;
   padding: 18px;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+  box-shadow: 0 10px 28px var(--pf-shadow);
 }
 
 /* Header */
@@ -297,7 +343,7 @@ export default {
 .sub {
   margin-top: 4px;
   font-size: 0.95rem;
-  color: rgba(0,0,0,0.60);
+  color: var(--pf-muted);
 }
 
 /* Meta row */
@@ -312,14 +358,14 @@ export default {
   font-weight: 700;
 }
 .counter {
-  color: rgba(0,0,0,0.55);
+  color: var(--pf-muted);
   font-size: 0.95rem;
 }
 
 /* Progress bar */
 .progress {
   height: 10px;
-  background: rgba(0,0,0,0.08);
+  background: var(--pf-border-soft);
   border-radius: 999px;
   overflow: hidden;
   margin: 10px 0 16px;
@@ -327,7 +373,7 @@ export default {
 .bar {
   height: 100%;
   width: 0%;
-  background: #2ea44f; /* green theme */
+  background: var(--pf-accent); /* green theme */
   border-radius: 999px;
   transition: width 200ms ease;
 }
@@ -344,8 +390,8 @@ export default {
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid rgba(46,164,79,0.22);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
-  background: #f6f6f6;
+  box-shadow: 0 10px 22px var(--pf-shadow-strong);
+  background: var(--pf-surface-2);
 }
 
 /* Form */
@@ -363,32 +409,33 @@ export default {
 .input {
   width: min(360px, 100%);
   padding: 12px 14px;
-  border: 1px solid rgba(0,0,0,0.18);
+  border: 1px solid var(--pf-border-strong);
   border-radius: 12px;
   font-size: 1.05rem;
   outline: none;
-  background: #fff;
+  background: var(--pf-input-bg);
+  color: var(--pf-text);
 }
 .input:focus {
   border-color: rgba(46,164,79,0.9);
   box-shadow: 0 0 0 4px rgba(46,164,79,0.18);
 }
 .input::placeholder {
-  color: rgba(0,0,0,0.45);
+  color: var(--pf-placeholder);
   opacity: 1;
 }
 
 .hint {
   width: min(360px, 100%);
   text-align: left;
-  color: rgba(0,0,0,0.55);
+  color: var(--pf-muted);
   font-size: 0.9rem;
 }
 
 .shortcut {
   width: min(360px, 100%);
   text-align: left;
-  color: rgba(0,0,0,0.55);
+  color: var(--pf-muted);
   font-size: 0.9rem;
   display: flex;
   gap: 8px;
@@ -397,20 +444,20 @@ export default {
 }
 
 .shortcut kbd {
-  background: #f6f6f6;
-  border: 1px solid rgba(0,0,0,0.12);
+  background: var(--pf-kbd-bg);
+  border: 1px solid var(--pf-kbd-border);
   padding: 4px 8px;
   border-radius: 6px;
   font-weight: 700;
   font-family: inherit;
-  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.04);
+  box-shadow: inset 0 -1px 0 var(--pf-border-soft);
 }
 
 .choice-index {
   display: inline-block;
   width: 28px;
   margin-right: 6px;
-  color: rgba(0,0,0,0.55);
+  color: var(--pf-muted);
   font-weight: 700;
 }
 
@@ -425,15 +472,16 @@ export default {
 .choice {
   padding: 12px 14px;
   border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.18);
-  background: #fff;
+  border: 1px solid var(--pf-border-strong);
+  background: var(--pf-input-bg);
+  color: var(--pf-text);
   text-align: left;
   font-weight: 700;
   cursor: pointer;
 }
 
 .choice:hover {
-  background: rgba(0,0,0,0.03);
+  background: var(--pf-hover);
 }
 
 .choice-selected {
@@ -460,19 +508,19 @@ export default {
   cursor: not-allowed;
 }
 .btn-primary {
-  background: #2ea44f;
+  background: var(--pf-accent);
   color: #fff;
 }
 .btn-primary:hover {
   filter: brightness(0.95);
 }
 .btn-secondary {
-  background: #fff;
-  color: #111;
-  border-color: rgba(0,0,0,0.18);
+  background: var(--pf-surface);
+  color: var(--pf-text);
+  border-color: var(--pf-border-strong);
 }
 .btn-secondary:hover {
-  background: rgba(0,0,0,0.03);
+  background: var(--pf-hover);
 }
 
 /* Small phones */
@@ -490,7 +538,7 @@ export default {
 .loading {
   text-align: center;
   padding: 26px 6px;
-  color: rgba(0,0,0,0.6);
+  color: var(--pf-muted);
   font-weight: 600;
 }
 </style>
