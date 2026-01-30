@@ -30,7 +30,41 @@
         </div>
       </div>
 
-      <div v-if="score.wrongAnswers && score.wrongAnswers.length" class="wrong">
+      <!-- Show separate sections for Find Jesse game mode -->
+      <div v-if="score.missedJesses && score.missedJesses.length" class="wrong">
+        <div class="wrong-title">Missed Jesses</div>
+        <ul class="wrong-list">
+          <li v-for="(w, idx) in score.missedJesses" :key="idx" class="wrong-item">
+            <img
+                class="wrong-photo"
+                :src="missedPhotoSrc(w)"
+                :alt="w.name ? `Photo of ${w.name}` : 'Missed Jesse photo'"
+                loading="lazy"
+                @error="(e) => (e.target.src = '/fallback-photos/fallback-avatar.png')"
+            />
+            <div class="wrong-name">{{ w.name }}</div>
+          </li>
+        </ul>
+      </div>
+
+      <div v-if="score.falsePositives && score.falsePositives.length" class="wrong">
+        <div class="wrong-title">Not a Jesse</div>
+        <ul class="wrong-list">
+          <li v-for="(w, idx) in score.falsePositives" :key="idx" class="wrong-item">
+            <img
+                class="wrong-photo"
+                :src="missedPhotoSrc(w)"
+                :alt="w.name ? `Photo of ${w.name}` : 'Not Jesse photo'"
+                loading="lazy"
+                @error="(e) => (e.target.src = '/fallback-photos/fallback-avatar.png')"
+            />
+            <div class="wrong-name">{{ w.name }}</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Fallback for other game modes using wrongAnswers -->
+      <div v-if="!score.missedJesses && !score.falsePositives && score.wrongAnswers && score.wrongAnswers.length" class="wrong">
         <div class="wrong-title">Missed names</div>
         <ul class="wrong-list">
           <li v-for="(w, idx) in score.wrongAnswers" :key="idx" class="wrong-item">
@@ -66,13 +100,20 @@ export default {
       score: {
         scoreOutOf10: 0,
         totalGoodAnswers: 0,
-        wrongAnswers: []
+        totalTiles: null,
+        wrongAnswers: [],
+        missedJesses: [],
+        falsePositives: []
       }
     };
   },
   computed: {
     totalQuestions() {
-      // The game uses 10, but we compute it safely.
+      // For Find Jesse mode, use totalTiles
+      if (this.score.totalTiles) {
+        return this.score.totalTiles;
+      }
+      // For other modes, compute from good + wrong answers
       const wrong = this.score.wrongAnswers?.length ?? 0;
       const right = this.score.totalGoodAnswers ?? 0;
       const total = right + wrong;

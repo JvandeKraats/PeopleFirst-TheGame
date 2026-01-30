@@ -10,6 +10,10 @@ function start(mode) {
 function goToMatch() {
   router.push('/match')
 }
+
+function goToFindJesse() {
+  router.push('/find-jesse')
+}
 </script>
 
 <template>
@@ -47,7 +51,12 @@ function goToMatch() {
         <div class="mode-hint">
           You’ll see one name and four photos — tap the correct photo.
         </div>
-      </div>
+        <button class="start-button start-button--secondary" @click="goToFindJesse">
+          Find Jesse
+        </button>
+        <div class="mode-hint">
+          CAPTCHA-style: select all Jesses by photo only.
+        </div>      </div>
 <!--
       <div class="hint">
         Best experienced on mobile · Portrait mode
