@@ -1,0 +1,48 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":semanticCommitType(chore)",
+    ":semanticCommitScope(deps)"
+  ],
+  "enabledManagers": ["npm", "github-actions"],
+  "timezone": "Europe/Amsterdam",
+  "schedule": ["after 1am and before 2am on Monday"],
+  "labels": ["dependencies"],
+  "automerge": false,
+  "platformAutomerge": false,
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 5,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["after 1am and before 2am on Monday"]
+  },
+  "packageRules": [
+    {
+      "groupName": "github actions",
+      "matchManagers": ["github-actions"],
+      "labels": ["dependencies", "ci"]
+    },
+    {
+      "groupName": "vite ecosystem (minor/patch)",
+      "matchPackageNames": ["vite", "@vitejs/plugin-vue", "vite-plugin-mkcert"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "vue ecosystem (minor/patch)",
+      "matchPackageNames": ["vue", "vue-router"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "matchPackageNames": ["@azure/msal-browser"],
+      "labels": ["dependencies", "security", "msal"],
+      "prPriority": 10
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "labels": ["dependencies", "breaking"]
+    }
+  ]
+}
