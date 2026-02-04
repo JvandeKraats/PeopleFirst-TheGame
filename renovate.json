@@ -10,6 +10,8 @@
   "enabledManagers": ["npm", "github-actions"],
   "timezone": "Europe/Amsterdam",
   "schedule": ["after 1am and before 2am on Monday"],
+  "dependencyDashboard": true,
+  "dependencyDashboardApproval": false,
   "labels": ["dependencies"],
   "automerge": false,
   "platformAutomerge": false,
