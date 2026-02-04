@@ -13,7 +13,7 @@
     "axios": "^1.5.0",
     "canvas-confetti": "^1.9.4",
     "cheerio": "^1.0.0-rc.12",
-    "vue": "^3.3.4",
+    "vue": "^3.5.0",
     "vue-router": "^5.0.0"
   },
   "devDependencies": {
