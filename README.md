@@ -1,5 +1,7 @@
 # PeopleFirst-TheGame
 
+[![Open in VS Code](https://img.shields.io/badge/Open%20in%20VS%20Code-007ACC?logo=visualstudiocode&logoColor=white)](https://vscode.dev/github/JvandeKraats/PeopleFirst-TheGame)
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
@@ -42,6 +44,8 @@ npm run dev:host
 ```
 
 ## Windows setup (fnm + PowerShell + Node.js)
+
+This repo also includes a [.nvmrc](.nvmrc) file for Node version alignment (useful for `nvm`/`fnm` workflows).
 
 If you want to be able to switch Node versions per-project, this repo works well with **fnm** (Fast Node Manager) on Windows.
 
