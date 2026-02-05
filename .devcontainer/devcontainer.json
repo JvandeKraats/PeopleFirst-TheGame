@@ -1,10 +1,11 @@
 {
   "name": "PeopleFirst-TheGame",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "remoteUser": "node",
+  "image": "mcr.microsoft.com/devcontainers/base:bullseye",
+  "remoteUser": "vscode",
   "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "24"
+    },
     "ghcr.io/devcontainers/features/terraform:1": {},
     "ghcr.io/devcontainers/features/azure-cli:1": {}
   },
@@ -28,6 +29,6 @@
       "onAutoForward": "notify"
     }
   },
-  "postCreateCommand": "npm ci",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y --no-install-recommends libnss3-tools && npm ci",
   "postAttachCommand": "node -v && npm -v"
 }
