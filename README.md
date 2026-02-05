@@ -1,5 +1,7 @@
 # PeopleFirst-TheGame
 
+[![Open in VS Code](https://img.shields.io/badge/Open%20in%20VS%20Code-007ACC?logo=visualstudiocode&logoColor=white)](https://vscode.dev/github/JvandeKraats/PeopleFirst-TheGame)
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
@@ -15,7 +17,35 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
+## Dev Container (recommended)
+
+This repo includes a VS Code **Dev Container** configuration for a consistent, ready-to-run dev environment.
+
+Prereqs:
+- Docker Desktop (or another Docker runtime)
+- VS Code + the **Dev Containers** extension
+
+Steps:
+1) Open the repo in VS Code
+2) Run: **Dev Containers: Reopen in Container**
+3) Once the container is ready, install deps happens automatically (`npm ci`)
+4) Start the app:
+
+```sh
+npm run dev
+```
+
+Notes:
+- The Vite dev server runs on port `5173` and is forwarded automatically.
+- If you want the dev server reachable from other devices, use:
+
+```sh
+npm run dev:host
+```
+
 ## Windows setup (fnm + PowerShell + Node.js)
+
+This repo also includes a [.nvmrc](.nvmrc) file for Node version alignment (useful for `nvm`/`fnm` workflows).
 
 If you want to be able to switch Node versions per-project, this repo works well with **fnm** (Fast Node Manager) on Windows.
 
@@ -51,11 +81,11 @@ fnm env --use-on-cd | Out-String | Invoke-Expression
 
 Restart PowerShell (or run `. $PROFILE`) so it takes effect.
 
-### 3) Install Node 20.20 using fnm
+### 3) Install Node 24 using fnm
 
 ```powershell
-fnm install 20.20.0
-fnm use 20.20.0
+fnm install 24
+fnm use 24
 node -v
 npm -v
 ```
@@ -96,3 +126,22 @@ Notes:
 - The workflow sets `VITE_BASE` to `/<repo>/` so assets work on a GitHub Pages **project** site.
 - The router uses hash mode, so deep links work on Pages (URLs look like `/#/game`).
 - If you use a custom domain or a user/org Pages site, set `VITE_BASE` to `/` in the workflow.
+
+## Renovate
+
+This repository uses **Renovate** to keep dependencies up to date.
+
+Config lives in [renovate.json](renovate.json) and is set up to:
+- Update **npm** dependencies and **GitHub Actions** versions
+- Create a **Dependency Dashboard** issue
+- Run on a schedule (Europe/Amsterdam): **Mondays between 01:00–02:00**
+- Limit PR churn (`prHourlyLimit: 2`, `prConcurrentLimit: 5`)
+- Keep **automerge disabled** (updates are always reviewed)
+- Run weekly **lockfile maintenance**
+
+Grouping and labeling:
+- GitHub Actions updates are grouped as “github actions” and labeled `dependencies` + `ci`
+- Vite-related minor/patch updates are grouped as “vite ecosystem (minor/patch)”
+- Vue-related minor/patch updates are grouped as “vue ecosystem (minor/patch)”
+- `@azure/msal-browser` updates get extra labels (including `security`) and higher priority
+- Major updates are labeled `breaking`
